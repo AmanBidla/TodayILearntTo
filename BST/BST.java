@@ -9,6 +9,7 @@ public BST(){
 }
 
 public BSTNode createNode(BSTNode left,BSTNode right,BSTNode parent,int item){
+	size++;;
 	return new BSTNode(left,right,parent,item);
 }
 
@@ -21,6 +22,7 @@ public void addItem(int item){
 	
 	if(root ==null){
 		 root= createNode(null,null,null,item);
+ 
 	}else{
 		BSTNode current=getRoot();
 		while(current!=null){
@@ -29,6 +31,7 @@ public void addItem(int item){
 					current=current.getRight();
 				}else{
 					current.setRight(createNode(null,null,current,item));
+ 
 					break;
 				}
 			}else if(item<=current.getItem()){
@@ -36,6 +39,7 @@ public void addItem(int item){
 					current=current.getLeft();
 				}else{
 					current.setLeft(createNode(null,null,current,item));
+ 
 					break;
 				}
 			}		
@@ -59,12 +63,7 @@ public BSTNode search(int item){
 	return null;
 }
 
-public void getNode(BSTNode root){
-	BSTNode currentRoot=root;
-	currentRoot=null;
-	System.out.println("getting all items after nullifying root");
-	getAllItems(getRoot());
-}
+ 
 
 
  
@@ -96,15 +95,18 @@ public void getNode(BSTNode root){
 							else{
 								current=deleteLeft;
 								deleteLeft.getParent().setRight(null);
+								size--;
 								break;
 							}
 						}
 				}else{ 
  						remove(current,direction);
+						size--;
 					}
 					break;
 				}
 		}
+
 }
 	 
 
@@ -116,7 +118,7 @@ public void remove(BSTNode current,String direction){
 		else current.getParent().setLeft(null);
 	}else
 		System.out.println("cannot remove root");
-		
+ 
 	
 }
 
