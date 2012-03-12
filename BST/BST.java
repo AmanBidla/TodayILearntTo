@@ -9,7 +9,6 @@ public BST(){
 }
 
 public BSTNode createNode(BSTNode left,BSTNode right,BSTNode parent,int item){
-	size++;;
 	return new BSTNode(left,right,parent,item);
 }
 
@@ -22,7 +21,6 @@ public void addItem(int item){
 	
 	if(root ==null){
 		 root= createNode(null,null,null,item);
- 
 	}else{
 		BSTNode current=getRoot();
 		while(current!=null){
@@ -31,7 +29,6 @@ public void addItem(int item){
 					current=current.getRight();
 				}else{
 					current.setRight(createNode(null,null,current,item));
- 
 					break;
 				}
 			}else if(item<=current.getItem()){
@@ -39,13 +36,12 @@ public void addItem(int item){
 					current=current.getLeft();
 				}else{
 					current.setLeft(createNode(null,null,current,item));
- 
 					break;
 				}
 			}		
 		}//end of while loop
 	}
-		
+	size++;	
 		
 }
 
@@ -62,65 +58,53 @@ public BSTNode search(int item){
 	}
 	return null;
 }
-
  
 
+ 
 
  
 
 	public  void delete(int item){
-
-
 		BSTNode current=getRoot();
-//		System.out.println(" root item is "+current.getItem());
 		String direction="";
-		while(current!=null){
-			 
+		while(current!=null){			 
 			if(item>current.getItem()){
 				 current=current.getRight();
-				direction="RIGHT";
 			}
-				
-			else if (item<current.getItem()){
+			else if (item<=current.getItem()){
+				if(item<current.getItem())
 					current=current.getLeft();
-					direction="LEFT";
+				else{
+ 				 System.out.println("deleting "+item+" now ...");	
+					
+			 	if(current.getLeft()==null && current.getRight()==null)
+				{
+						current.getParent().setRight(null);
+						break;
 				}
-			else{
- 				 System.out.println("deleting "+item);	
-
-				if(current.getLeft()!=null){
-						BSTNode deleteLeft = current.getLeft();
-						while(deleteLeft!=null){
-							if(deleteLeft.getRight()!=null) deleteLeft=deleteLeft.getRight();
-							else{
-								current=deleteLeft;
-								deleteLeft.getParent().setRight(null);
-								size--;
-								break;
-							}
+		 		else if(current.getRight()!=null && current.getLeft()==null){
+						current.getParent().setRight(current.getRight());
+						break; 
 						}
-				}else{ 
- 						remove(current,direction);
-						size--;
-					}
-					break;
+				else if(current.getLeft()!=null){
+ 						if(current.getLeft().getRight()!=null){
+							BSTNode currentLeft_Right = current.getLeft();
+							while(currentLeft_Right.getRight()!=null){
+								currentLeft_Right=currentLeft_Right.getRight();
+							}
+							currentLeft_Right.getParent().setRight(currentLeft_Right);
+							break;
+						}else{
+							current.getParent().setLeft(current.getLeft());
+							break;
+						}
 				}
 		}
-
+   }
+}
 }
 	 
-
-
-public void remove(BSTNode current,String direction){
-	
-	if(current!=root){
-		if(direction=="RIGHT") current.getParent().setRight(null);
-		else current.getParent().setLeft(null);
-	}else
-		System.out.println("cannot remove root");
  
-	
-}
 
 public void getAllItems( BSTNode root){
  	if(root.getLeft()!=null) getAllItems(root.getLeft());
