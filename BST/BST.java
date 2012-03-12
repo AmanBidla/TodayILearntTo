@@ -75,12 +75,15 @@ public BSTNode search(int item){
 				if(item<current.getItem())
 					current=current.getLeft();
 				else{
- 				 System.out.println("deleting "+item+" now ...");	
-					
+
 			 	if(current.getLeft()==null && current.getRight()==null)
 				{
-						current.getParent().setRight(null);
-						break;
+					if(current.getParent().getRight()!=null)
+					 if(current.getParent().getRight().getItem()==item) 
+								current.getParent().setRight(null);
+ 					else 
+						current.getParent().setLeft(null);
+ 					break;
 				}
 		 		else if(current.getRight()!=null && current.getLeft()==null){
 						current.getParent().setRight(current.getRight());
