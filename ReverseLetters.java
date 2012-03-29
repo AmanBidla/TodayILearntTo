@@ -8,12 +8,12 @@
  	String reverseMe = "AfFa";
 
  
-		/*for (int i = 0; i < reverseMe.length(); i++) {
+		for (int i = 0; i < reverseMe.length(); i++) {
 		    reverseMe = reverseMe.substring(1, reverseMe.length() - i)
 		        + reverseMe.substring(0, 1)
 		        + reverseMe.substring(reverseMe.length() - i, reverseMe.length());
 		 }
-		 System.out.println(reverseMe);*/
+		 System.out.println(reverseMe);
  	 //System.out.println(reverseMe.substring(reverseMe.length()));
 
 	/*		System.out.println(reverseMe);
@@ -30,8 +30,8 @@
 		}
 	}
  
-	System.out.println(reverseMe);	*/
-	String s1="carr";
+	System.out.println(reverseMe);*/	
+/*	String s1="carr";
 	String s2="race";
 	StringBuffer s1b = new StringBuffer(s1);
 	StringBuffer s2b = new StringBuffer(s2);
@@ -61,7 +61,7 @@
 		if(!(s1b.length()==s2b.length())) return false;
 		else return true;
 
-	}
+	}*/
 	
 
 }
