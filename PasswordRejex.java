@@ -13,8 +13,8 @@ public class PasswordRejex{
 
 	{
 	
-		String password="123qs123";
- 		char [] pass = password.toCharArray();
+		String password="123l123q";
+ 	//	char [] pass = password.toCharArray();
 		char checkChar;
  		boolean check;
 		int indexOfRepeat=0;
@@ -22,25 +22,43 @@ public class PasswordRejex{
 		String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z]).{5,12})";
 			Pattern p = Pattern.compile(PASSWORD_PATTERN);
 		    Matcher m = p.matcher(password);
-			//System.out.println(m.matches());
+//			System.out.println(m.matches());
 			check=m.matches();
 		if(m.matches()){
 			
-		for(int i=0;i<pass.length;i++)
+		for(int i=0;i<password.length();i++)
 		{
-		 checkChar= pass[i];
+
 		 indexOfRepeat=password.indexOf(password.substring(i,i+1),i+1);
  		if(indexOfRepeat>=0)
 			{
 				
 				String patternOne = password.substring(i,indexOfRepeat);
-				//System.out.print(patternOne+" and ");
+				char[] p1 =patternOne.toCharArray();
+//				System.out.print(patternOne+" and ");
 				String patternTwo = password.substring(indexOfRepeat);
-				//System.out.print(patternTwo+"\n");
-				if(patternOne.length()==patternTwo.length())
-					{
-					check=false;
-					}
+				char[] p2 =patternTwo.toCharArray();
+//				System.out.print(patternTwo+"\n");
+//				System.out.println("compare for length = "+patternOne.length());
+ 				for(int k=0;k<patternOne.length();k++){
+						if(p1[k]==p2[k])
+							{
+//							System.out.println("comparing "+p1[k]+" and "+p2[k]);
+							check=false;
+								
+							}
+							
+						else
+							{
+//							System.out.println("comparing "+p1[k]+" and "+p2[k]+" which obviousy does not match");
+							check=true;
+							break;								
+							}
+
+				}
+				
+				
+
 		}
 			if(!check) break;
 			
