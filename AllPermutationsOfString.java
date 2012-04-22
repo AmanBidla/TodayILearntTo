@@ -8,9 +8,9 @@ public static void perm(String prefix, String s){
 			perm(prefix+s.charAt(i),  s.substring(0,i)+s.substring(i+1,n) );
 }
 
-
 public static void main(String an[]){
 	perm("","abc");
+
 	
 }
 
