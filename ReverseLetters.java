@@ -5,15 +5,22 @@
  
 //	String reverseMe = "MynameisSreeprasad";
    	//String reverseMe = "AAAa";
- 	String reverseMe = "AfFa";
+ 	String reverseMe = "hello my name is sreeprasad";
 
  
+		/* iterative approach */
 		for (int i = 0; i < reverseMe.length(); i++) {
 		    reverseMe = reverseMe.substring(1, reverseMe.length() - i)
 		        + reverseMe.substring(0, 1)
 		        + reverseMe.substring(reverseMe.length() - i, reverseMe.length());
 		 }
-		 System.out.println(reverseMe);
+		 System.out.println(reverseMe); 
+		
+		/* recusive approach */
+			System.out.println(reverseMe(reverseMe));
+		
+		
+		
  	 //System.out.println(reverseMe.substring(reverseMe.length()));
 
 	/*		System.out.println(reverseMe);
@@ -62,6 +69,12 @@
 		else return true;
 
 	}*/
+	}
 	
+	public	static String reverseMe(String s) {
+	   if(s.length() == 0)
+	     return "";
+	   return s.charAt(s.length() - 1) + reverseMe(s.substring(0,s.length()-1));
+	 }
 
 }
