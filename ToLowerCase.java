@@ -20,7 +20,7 @@ public class ToLowerCase{
 		char []b= a.toCharArray();
 		for(int i=1;i<a.length();i++){
 //			System.out.println((((int)(b[i]))));
-			if((((int)(b[i]))>=97) && ((((int)(b[i]))<=121))){
+			if((((int)(b[i]))>=97) && ((((int)(b[i]))<=122))){
 //				System.out.println("starting from "+b[i]);
 				if((i+1)<b.length){
 //					System.out.println("\n"+(((int)b[i+1])-((int)b[i])==1)+"\n");
