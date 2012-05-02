@@ -1,0 +1,58 @@
+/* Algorithm for printing all paths that add up to as given sum in a binary tree
+All paths need to be printed not just one single path */
+
+public void findPath (TreeNode node, int sum){
+
+	if (node==null)
+		return;
+		
+	int depth = getDepth(node);
+	int [] path= new int[depth];
+	findSum(sum,node,path,0);
+
+}
+
+/* find sum */
+
+public void findSum(int sum,TreeNode node,int[]path,int level){
+
+	if (node==null)
+		return;
+	
+	path[level]=node.getItem();
+	
+	int t=0;
+
+	for(int i=level;i>=0;i--){
+
+		t+=path[i];
+		
+		if(t==sum)
+			print(path,i,level);
+
+	}
+
+	findSum(sum,node.getLeft(),path,level+1);
+	findSum(sum,node.getRight(),path,level+1);
+	
+}
+
+/* get depth */
+
+public int getDepth(TreeNode node){
+
+if(node==null)
+	return 0;
+
+return 1+Math.max(getDepth(node.getLeft()),getDepth(node.getRight()));
+
+}
+
+/* print all paths */
+
+public void print( int []path,int start,int end){
+
+for(int i=start;i<=end;i++)
+	System.out.print(path[i]+" ");
+	System.out.println("");
+}
