@@ -3,6 +3,9 @@ Find the longest common subsequence.
 Replace all spaces with '%20' without using replace
 Find the k-th smallest element of an unsorted array of n elements
 Sort stack without loop
+Code to covert infix to postfix notation
+Code to find if pattern is present in string
+Code to find all permutations of string
 Compress string: "aaabbcccaa" should o/p a3b2c3a2 but if compressed string length > original string length then o/p original 
 string.
 Write single line to convert array to set using generics
