@@ -1,0 +1,19 @@
+/* Algorithm to find all nodes between two given number */
+
+public void trim(TreeNode root, int min, int max){
+
+	if(root==null)
+		return null;
+	
+	if(root.data<min)
+		return trim(root.right,min,max);
+	
+	if(root.data>max)
+		return trim(root.left,min,max);
+	
+	root.left= trim(root.left,min,max);
+	root.right= trim(root.right,min,max);
+	
+	return root;
+
+}
