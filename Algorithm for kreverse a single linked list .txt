@@ -1,0 +1,60 @@
+/* Algorithm for kreverse a single linked list */
+
+public void reverse(int k){
+	SListNode current=getHead().getNext();
+	SListNode start= current;
+	SListNode nextNode=null;
+	boolean isFirstNode=false;
+	SListNode startNode=current;
+	SListNode connectionNode =null;
+	while(current!=null){
+ 		start=current;
+		for(int i=1;i<k;i++){
+			if(current.getNext()!=null)
+			current=current.getNext();
+		}
+		nextNode=current.getNext();
+		current.setNext(null);
+		SListNode returnedNode = reverseSubList(start);
+		if(!isFirstNode){
+			isFirstNode=true;
+		startNode=returnedNode;
+		getHead().setNext(startNode);
+			while(returnedNode!=null){
+				if(returnedNode.getNext()!=null)
+					returnedNode=returnedNode.getNext();
+				else
+					break;
+			}
+			returnedNode.setNext(nextNode);
+			connectionNode=returnedNode;
+		}else{
+			connectionNode.setNext(returnedNode);
+			connectionNode=start;
+		}
+
+		current=nextNode;
+	 
+	}
+	System.out.println(toString());			
+	
+
+
+			
+}
+
+public SListNode reverseSubList	(SListNode list){
+	SListNode current=list;
+	SListNode prevNode=null;
+	SListNode nextNode=null;
+	SListNode temp = current;
+
+	while(current!=null){
+		nextNode=current.getNext();
+		current.setNext(prevNode);
+		prevNode=current;
+		current=nextNode;
+	}
+	 
+	return prevNode;
+}
