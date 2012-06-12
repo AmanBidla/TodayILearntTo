@@ -12,6 +12,5 @@ public class ReverseSpace{
 		return (k==-1)?words:(reverse(words.substring(k+1)) + " "+words.substring(0,k)  );
 		
 	}
-			
- 
+			 
 	}
