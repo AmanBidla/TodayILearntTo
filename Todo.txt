@@ -1,0 +1,12 @@
+TODO
+
+Complete suduku
+Complete sql
+Complete recursion
+meetup blog
+make a simple website over amazon cloud
+learn puppet,chef
+Twitter text mining from linkedin
+graph
+http://stackoverflow.com/questions/1323736/longest-non-overlapping-substring
+http://courses.csail.mit.edu/6.851/spring12/lectures/L15.html

@@ -1,0 +1,50 @@
+////////////////////////////////////////////////////////////////
+
+If there are N nodes and it is an n-ary tree, O(N) pre-processing is
+required for every node, storing its parent in each step.
+
+Subsequently, if LCA(u,v) is to be found, produce the list of
+ancestors A(u) and A(v), which can be done in O(log-n N) steps.
+
+Then compare A(u) and A(v) to find the furthest element in A(u) and
+A(v) that matches.
+
+So O(N) pre-processing and O(log-n N) query time complexity.
+
+////////////////////////////////////////////////////////////////
+
+public Node findCommon(Node root, int val1, int val2){
+
+	if(root==null)
+		return null;
+	LinkedList<Node> l1= new LinkedList<Node> ();
+	LinkedList<Node> l2= new LinkedList<Node>();
+	boolean a1 = findCommon(root,val1,l1);
+	boolean a2= findCommon(root,val2,l2);
+	if(a1&&a2){
+		while(l1!=null && l2!=null && l1.getFront()!=l2.getFront()){
+		l1=l1.getNext();
+		}
+		return l1;	
+	}else{
+	return null
+	}
+
+}
+
+
+public boolean findCommon(Node root, int val, LinkedList<? l){
+
+	l.addLast(root);
+	if(root.getItem()==val)
+		return true;
+	List<Node> children = root.getChildren();
+	for(Node eachChild:children){
+		boolean flag=findCommon(root,val,l);
+			if(flag)
+				return true;
+	}
+	l.removeLast();
+	return false;
+
+}

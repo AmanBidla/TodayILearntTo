@@ -1,0 +1,18 @@
+/* Algorithm to iteratively reverse link list */
+
+
+public ListNode reverse(ListNode list){
+	ListNode prevNode=null;
+	ListNode current=list;
+	ListNode nextNode=null;
+	
+	while(current!=null){
+		nextNode=current.next;
+		current.next=prevNode;
+ 		prevNode=current;	
+		current=nextNode;
+	}
+	
+	return prevNode;
+
+}
