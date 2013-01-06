@@ -1,3 +1,6 @@
+Generate all subsets of set
+Generate all left and right parenthesis 
+Compression string 'aaabbcccc' to a3b2c4
 Clone a singly linked list with a random pointer to any other node
 Find intersection between two linkedlist
 Find all nodes between given 2 numbers in a binary search tree
