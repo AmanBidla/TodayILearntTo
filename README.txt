@@ -1,3 +1,5 @@
+Find the largest Continguous sum in an array of int
+Given net total value and US currency find how many ways you can generate total value
 Generate all subsets of set
 Generate all left and right parenthesis 
 Compression string 'aaabbcccc' to a3b2c4
