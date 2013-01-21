@@ -1,0 +1,18 @@
+3 types of annotations 
+	@SupressWarnings("unused")
+	@Deprecated
+	@Override
+
+To create an annotation :
+
+	Create an interface with @ symbol
+	String value() is given by default
+
+public @interface MyAnnotatons{
+
+	String myComment();
+	int myValue();
+	
+ 
+	String value();
+}

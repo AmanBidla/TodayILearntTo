@@ -1,0 +1,15 @@
+/* reverse singly linked list iteratively */
+public void reverse(){
+	SListNode prevNode= null;
+	SListNode current= getHead().getNext();
+	SListNode nextNode =null;
+	
+	while(current!=null){
+		nextNode=current.getNext();
+		current.setNext(prevNode);
+		prevNode=current;
+		current=nextNode;					
+	}
+	
+	System.out.println(toString());
+}
