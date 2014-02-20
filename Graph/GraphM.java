@@ -245,6 +245,62 @@ public class GraphM implements Graph{
  		System.out.println("post visit of "+v);
  	}
 
+ 	/* returns topological sort of the graph */
+ 	public Queue<Integer> topologicalSort(GraphM G){
+
+ 		int [] inrank = new int[G.getN()];
+
+ 		Queue q = new ArrayDeque();
+ 		Queue order = new ArrayDeque();
+
+ 		/* this is not required but just put in to initialize */
+ 		for(int i=0;i<G.getN();i++)
+ 		{
+ 			inrank[i]=0;
+ 		}
+
+ 		for(int i=0;i<G.getN();i++)
+ 		{
+ 			for(int w=G.first(i);w<G.getN();w=G.second(i,w))
+ 			{
+ 				inrank[i]++;
+ 			}
+ 		}
+
+
+ 		/* initialize queue to contain vertices of rank 0 */
+ 		for(int i =0;i<G.getN();i++)
+ 		{
+ 			if(inrank[i]==0)
+ 			{
+ 				q.add(i);	
+ 			}
+ 			
+ 		}
+
+ 		while(q.size()>0)
+ 		{
+ 			int v = (Integer) q.remove();
+
+ 			order.add(v);
+
+ 			for(int w=G.first(v); w<G.getN(); w= G.second(v,w))
+ 			{	
+ 				inrank[w]--;
+
+ 				if(inrank[w]==0)
+ 				{
+ 					q.add(w);
+ 				}
+
+ 			}
+ 		}
+
+ 		return order;
+
+
+ 	}
+
  	public boolean isBipartie(Graph G, int start){
 
  		Queue q = new ArrayDeque();

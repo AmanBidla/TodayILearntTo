@@ -1,0 +1,10 @@
+import java.util.Scanner;
+
+
+public class Skype {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		String st = in.nextLine();
+	}
+}

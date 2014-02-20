@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+
+public class Amplify {
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		String st = in.nextLine();
+		
+		double l =convertToIndex(st);
+		System.out.println((int)l);
+	}
+	
+	private static double  convertToIndex(String st){
+		
+		if(st.length()==0){
+			return (st.charAt(0)-'A')+1;
+		}
+		
+		int po=0;
+		double s=0;
+		/*for(int i=st.length()-1;i>=0;i--){
+			char a = st.charAt(i);
+			long l = (a-'A')+1;
+			System.out.println("L "+l);
+			s+= l*(Math.pow(26,po));
+			System.out.println("s "+s);
+			po++;
+		} */
+		
+		double ret=0;
+		for(int i=0;i<st.length();i++){
+			ret = (ret * 26) + (st.charaAt(i) -'A'+1);
+		}
+		
+		return s;
+		
+		
+	}
+	
+	
+}

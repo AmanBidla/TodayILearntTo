@@ -1,0 +1,18 @@
+package test.test;
+
+import net.swisstech.bitly.BitlyClient;
+import net.swisstech.bitly.model.Response;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        BitlyClient client = new BitlyClient("dcd6cf5a9df3a93fef4d472a60bb49dd96c89f4e");
+        Response<ShortUrl> respShort = client.shorten().longUrl("https://github.com/stackmagic/bitly-api-client").call();     
+    }
+}

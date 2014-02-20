@@ -1,0 +1,80 @@
+package com.text.blocking;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class TextBlocking {
+	
+	private static String regex = "[a-z]+";
+	private static StringBuilder[] NORESULT ;
+	
+	private static StringBuilder [] blocking(final String text){
+		
+		StringBuilder [] st; 
+		
+		if(validate(text)){
+			
+			String [] words = text.split(" ");
+		
+			
+			int wordLength = words[0].length();
+			st = new StringBuilder[wordLength];
+			for(int i=0;i<wordLength;i++){
+				for(int j=0;j<words.length;j++){
+					st[j].append(words[i].charAt(i));
+				}
+			}
+			
+			return st;
+			
+			
+		}else{
+			return NORESULT;
+		}
+		
+		
+	}
+	
+
+	public static void main(String[] args) {
+ 
+		String input= args[0];
+		StringBuilder[] ouput=blocking(input);
+		
+	}
+	
+	private static boolean validate(final String text){
+		
+		
+		
+		/*text will contain between 1 and 50 elements, inclusive*/
+		String [] words= text.split(" ");
+		int N = words.length;
+		int wordLength = words[0].length();
+		if(N<1 ||N>50) return false;
+		
+		/*Each element of text will contain between 1 and 50 characters, inclusive. */
+		/*Each element of text will contain the same number of characters.*/
+		/*Each character in text will be an uppercase letter ([A-Z]).*/
+		
+		for(String word:words){
+			if(word.length()<1 || word.length()>50) return false;
+			Pattern pat = Pattern.compile(regex);
+			Matcher mat = pat.matcher(word);
+			if(mat.matches()) return false;
+			
+			if(word.length()!=wordLength) return false;
+		}
+		
+		return true;
+		
+	
+		
+		
+		
+		
+		
+		
+	}
+
+}

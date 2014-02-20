@@ -1,0 +1,23 @@
+
+public class Peiord {
+
+	private static int pero(int s){
+		String b = Integer.toBinaryString(s);
+		System.out.println("binary "+b);
+		int p=1;
+		int mid = b.length()/2;
+		int k=1;
+		System.out.println();
+		while(mid)>0){
+			 
+		}
+		
+		System.out.println("p "+p+" k "+k );
+		
+		return p;
+	}
+	public static void main(String[] args) {
+		pero(955);
+	}
+	
+}
