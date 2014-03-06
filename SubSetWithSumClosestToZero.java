@@ -8,6 +8,7 @@ public class SubSetWithSumClosestToZero{
 
 
 	 class Prefixa implements Comparable<Prefixa>{
+		
 		int index,first,value,findex,lindex;
 
 		public Prefixa(int value, int start, int end){
@@ -36,31 +37,34 @@ public class SubSetWithSumClosestToZero{
 	private  void subSet(int [] array){
 		
 		int len = array.length;
-		List<Prefixa> list = new ArrayList<Prefixa>();
- 		list.add(new Prefixa(array[0],0));
+		Prefixa [] prefixa = new Prefixa[len];
+		prefixa[0] = new Prefixa(array[0],0);
 		for(int i=1;i<len;i++)
-			list.add(new Prefixa(((list.get(i-1)).first+array[i]),i));
+			prefixa[i]= new Prefixa(((prefixa[i-1]).first+array[i]),i);
+			
 
 		//System.out.println("printing prefix array with value and original index");
 		//showPrefixa(list);
 		
-		int start = list.get(0).first;
-		int end = list.get(len-1).first;
+		int start = prefixa[0].first;
+		int end = prefixa[len-1].first;
 
-		Collections.sort(list);
+		Arrays.sort(prefixa);
 
 		//System.out.println("printing value after sorting");
-		//showPrefixa(list);
+		//showPrefixa(prefixa);
 
 		List<Prefixa> pairWiseDiff = new ArrayList<Prefixa>();
+		Prefixa[] pairwise = new Prefixa[len-1];
+
 		for(int i=0;i<len-1;i++){
-			pairWiseDiff.add( new Prefixa(((list.get(i+1)).first)-((list.get(i)).first),list.get(i).index, list.get(i+1).index));
+			pairwise[i]=new Prefixa((prefixa[i+1].first-prefixa[i].first),prefixa[i].index,prefixa[i+1].index);
 		}
 
 		//System.out.println("printing pairwise diff ");
-		//showPairWiseDiff(pairWiseDiff,len);
+		//showPairWiseDiff(pairwise,len);
 
-		Prefixa minElement = findMin(pairWiseDiff);
+		Prefixa minElement = findMin(pairwise);
 		//System.out.println("min element is "+minElement.value+" index start "+minElement.findex+" index end "+minElement.lindex);
 		int[] candi = new int[3];
 
@@ -85,7 +89,7 @@ public class SubSetWithSumClosestToZero{
 					vSumZero.add(array[i]);
 				}
 		/*}*/
-		
+
 		for(int i=0;i<vSumZero.size();i++){
 			System.out.print(vSumZero.get(i)+" ");
 		}
@@ -93,16 +97,16 @@ public class SubSetWithSumClosestToZero{
 
 	}
 
-	private void showPairWiseDiff(List<Prefixa> pairWiseDiff,int len){
+	private void showPairWiseDiff(Prefixa[] pairWiseDiff,int len){
 		for(int i=0;i<len-1;i++){
-			System.out.println("("+pairWiseDiff.get(i).value+":"+pairWiseDiff.get(i).findex+":"+pairWiseDiff.get(i).lindex+")");
+			System.out.println("("+pairWiseDiff[i].value+":"+pairWiseDiff[i].findex+":"+pairWiseDiff[i].lindex+")");
 		}
 	}
 
-	private void showPrefixa(List<Prefixa> list){
-		for(int i=0;i<list.size();i++){
-			int first = (list.get(i)).first;
-			int index = (list.get(i)).index;
+	private void showPrefixa(Prefixa[] list){
+		for(int i=0;i<list.length;i++){
+			int first = (list[i]).first;
+			int index = (list[i]).index;
 			System.out.println(first+":"+index);
 		}
 	}
@@ -118,13 +122,13 @@ public class SubSetWithSumClosestToZero{
 		return min;
 	}
 
-	private Prefixa findMin(List<Prefixa> list){
+	private Prefixa findMin(Prefixa[] list){
 
-		Prefixa min = list.get(0);
-		for(int i=1;i<list.size();i++){
+		Prefixa min = list[0];
+		for(int i=1;i<list.length;i++){
 			//System.out.println("comparing "+min.value+" with "+list.get(i).value+" is "+(min.value<list.get(i).value));
-			if(min.value>list.get(i).value)
-				min=list.get(i);
+			if(min.value>list[i].value)
+				min=list[i];
 		}
 
 		return min;
