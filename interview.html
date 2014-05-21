@@ -1,0 +1,212 @@
+<ol>
+
+<li>
+	<ol> <b>Dynamic programming </b><br/>
+		<li><a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/LIS.java">Longest Increasing Subsequence</a></li>
+		<li>Longest Common Subsequence</li>
+		<li><a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/CoinExchange.java">Coin Exchange </a></li>
+		<li>Subset Sum</li>
+		<li>KnapSack</li>
+		<li><a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/DistinctSubString.java">Distinct Subsequence</a></li>
+		<li>Kandance 2d array</li>
+		<li><a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/LongestPalindromSubsequence.java">longest Palindrome subsequence</li>
+		<li><a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/Manacher.java">longest Palindrome substring ( Manacher ) </a></li>
+		<li>maximum size sub matrix with all 1</li>
+		<li> <a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/MaximumSumSubmatrix.java">Maximum subset sum matrix </li>
+
+
+
+	</ol>
+
+</li>
+	
+<li>
+	<a href="https://sites.google.com/site/indy256/algo/lis">Best Learning Material. Search here first </a>
+
+</li>
+
+<li>
+	<ol> <b>Blog Posts</b><br/>
+		<li><a href="http://n00tc0d3r.blogspot.com/">http://n00tc0d3r.blogspot.com/</a></li>
+		<li><a href="http://yucoding.blogspot.com/">http://yucoding.blogspot.com/</a></li>
+		<li><a href="http://smartlhc.blogspot.com/">http://smartlhc.blogspot.com/</a></li>
+		<li><a href="http://rleetcode.blogspot.com/">http://rleetcode.blogspot.com/</a></li>
+		<li><a href="http://www.ardendertat.com/2012/01/02/programming-interview-questions-24-find-next-higher-number-with-same-digits/">www.ardendertat.com</a></li>
+
+	</ol>
+</li>
+
+<li>
+  <ol> <b>Lectures</b> <br/>
+  	<li>http://www.cs.sunysb.edu/~skiena/392/audio/</li>
+  </ol>
+</li>
+
+
+<li>
+	<ol><b>Github links </b><br/>
+	<li>https://gist.github.com/bknarendra</li>
+	</ol>
+</li>
+<br/>
+
+
+	<li>SubSetSum problem : Given a set of non-negative integers, and a value sum, determine if there is a subset of the given set with sum equal to given sum.
+array is [1, 3, 2, 5, 4, 9] and sum is 9.
+There are 2 solutions for this.
+<br/>
+<a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/AllPairSubSetSum.java">SubSetSumDynamic</a><br>
+<a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/AllPairSubSetSum.java">SubSetSumRecursive</a>
+</li>
+
+<li>Coin Exchange:<br/>
+	coin denomination {1, 5, 10, 25} <br/>
+	total amount = 67 <br/>
+<a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/CoinExchange.java">CoinExchangeDynamic </a><br/>
+<a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/CoinExchange.java">CoinExchangeRecursive </a>
+</li>
+
+<li>
+given m x n matrix print all the possible paths top to down. 
+<br>
+Example <br>
+1 2 3 <br>
+4 5 6 <br>
+7 8 9 <br>
+<br/>
+path for root(0,0) 1 <br>
+1-4-7 <br>
+1-4-8 <br>
+1-5-7 <br>
+1-5-8 <br>
+1-5-9 
+</li>
+<li>How to sort a 1000 GB file with ram size is 4 GB only. Which algorithm or data structure we need to use to sort these files? 
+Follow Up: External sort is Ok... but how can you make this solution more efficient... 
+Follow Up 2: Ideal chunk size for external sort
+<br/>
+<p>
+Use: a two pass approach <br/> 
+First pass chunk sorting: 
+<ol>
+<li>Load chunks of 4 GB data in memory and do an in place sort (Merge Sort or Quick Sort). </li>
+<li>Write the chunk back to the same place on disk </li>
+<li>Repeat 250 times (until end of file or all data is consumed) </li>
+</ol>
+</p>
+<p>
+Second Phases "merge": 
+Now you have a choice to merge, what is going to be your "Bucket size" which will govern the N in a N-way-merge. (This gets real tricky, real fast) 
+In this case we have 250 chunks of 4 GB each, 
+One way to do this is, 
+<ol>
+<li>Load first 8.192 MB from each of 250 chunks (250*8.192 MB = 2GB) this is our input buffer and rest of the 4 GB is our output buffer </li>
+<li>Do a 250 ways merge on this 250 sorted bins / buckets </li>
+<li>When any of the 250 bins is empty load it with the next 8.192 MB from the associated chunks </li>
+<li>When Output buffer of 2 GB is full - write out the buffer to the external storage.</li> 
+</p>
+</ol>
+</li>
+<li>Word count frequency top k words : <a href="http://xipanxiao.wordpress.com/2013/02/01/find-the-top-100-frequently-used-word-in-a-document-using-a-trie-and-a-fixed-size-minimal-heap/">here</a></li>
+
+<li>I have an arrayList A which contains say 2,3,5,7,8 <br/>
+
+I have another arrayList B which contains 1, 3 <br/>
+
+Now taking the elements of B as the locations, I need to remove the elements of A present in that locations. So, basically I need to remove the element 2(position 1) and 5(position 3) from A. How to achieve it as we know that once one element got removed from an arrayList,the positions will be auto adjusted.</li>
+
+<li>You are given N points in a X-Y plane. Find the two closest points out of them.<br/>
+	<p>
+		Let P_x be an array of the points sorted by their x-coordinates and P_y an array of the points sorted by their y-coordinates. Divide the plain into two regions e.g. using the median of the x-coordinates. Assume delta is the minimum distance among points entirely in one of the regions (determined by recursion). Now consider the vertical strip centered around the median having width 2 * delta. Let S_y be the sorted subset of P_y consisting of the points in the strip. For each element in S_y calculate its distance to the next 7 points in S_y. </p>
+
+</li>
+
+<li>Given an Array A[], find the maximum j - i such that A[j] > A[i]. <br/>
+For example Input { 34,8,10,3,2,80,30,33,1} and Output 6 (j=7, i=1) <br/><br/>
+Time Complexity should be less then O(n^2)<br/>
+
+<a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/MaximumDiff.java">MaximumDiff.java</a>
+</li>
+
+<li>following coins: half dollar, quarters,dime, nickel and penny. Print all the possible combinations of coins that will equal to one dollar.(Ex : (2) half-dollar , (4) quarter dollar etc )..</li>
+
+<li>Suppose there is an array with numbers : 
+1, 14, 5, k, 4, 2, 54, k, 87, 98, 3, 1, 32 
+Output for this can be assuming k =20 
+1,14,5,4,2,3,1,k,k,54,87,98,32 
+Now sort this array in a way all k are in middle and all values on left of k are smaller (in any order) and on right are larger (in any order) 
+Note: k is an integer value within range of 1 - 32768 
+Follow up: Sorting is ok. what sorting you want to use ? still is sorting necessary ? are there any other approaches ? 
+Follow up: Used External array with 2 pointers and 3 pointers approach. They wanted more efficient solution.</li>
+
+
+<li>clone graph</li>
+
+
+<li>String to Integer (TDD) – Phone Screen Question <a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/ATOI.java">ATOI.java</a></li>
+
+<li>All paths that add to a sum</li>
+<li>public int findMaxSumRootLeaf(TreeNode node,int currSum) { <br/>
+    if(node == null)<br/>
+        return 0;<br/>
+    return Math.max(findMaxSumRootLeaf(node.leftChild,currSum)+node.data, findMaxSumRootLeaf(node.<br/>rightChild,currSum)+node.data);<br/>
+}</li>
+
+<li>Binary Tree Max sum level</li>
+<li>
+<p>1 > Can you think how to implement stack and queue based on heap data structure ?
+It was wonderful when I was a reading the book on data structure and algorithms. As we all know stack in LIFO and when we use min heap , root element is always minimum and we can extract that in constant time.
+To implement stack which is LIFO, use an extra integer variable which will start with negative one or negative of current system time. Use above extra integer as priority when you insert into the min heap. You will get stack behavior. Comment on this blog if you need more details. But hope above sentence can give you enough idea.
+Queue as we all know is FIFO, element came at old time should be retrieved first. As we are using min heap, let us use another extra integer variable this time. But we will have positive initial value or positive system time. When we use that as priority to add elements to the min heap, element with recent time or max min value will be peeked every time.</p>
+<p>2 > Given two arrays , how will you find the paid which gives you maximum sum ?
+As I am writing this post under heap, you would have figured out already. Yes use two max-heaps one for each array and get the top most elements from both the heap and that will be your maximum sum.</p>
+<p>3 > How will you find median with heap ?
+We all know how median can be found. Given list of elements, sort them and return middle element or average of the middle two elements depending on even total or odd total number of elements.
+Think!!!
+We will have all elements before the median as less than median and after median will be greater than the median. So create two heaps. One is maxheap and another is min-heap using the input elements.
+If total number of elements are even then median is the average of maximum element from max heap and minimum element from the min heap.
+If total number of elements are odd then median is just the maximum element of the max heap.</p>
+</li>
+<li>
+<p>
+Doing pre-order traversal on the Binary Tree(min-heap) gives elements in increasing order. </p>
+<p>Doing pre-order traversal on the Binary Tree(max-heap) gives elements in descending order.</p> 
+<p>Doing post-order traversal on the Binary Tree(min-heap) gives elements in descending order.</p>
+<p>Doing post-order traversal on the Binary Tree(max-heap) gives elements in ascending order.</p>
+</li>
+
+<li><a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/maximumContiguousSum.java">maximumContiguousSum.java</a></li>
+<li><a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/nonContiguousMaxSum.java">nonContiguousMaxSum.java</a></li>
+
+<li>Find height and dimension of Binary tree iteratively <a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/MaxDiameter.java">MaxDiameter.java</a>
+</li>
+<li>Find the longest repeated String in text. <a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/LongestRepeatedSubstring.java">LongestRepeatedSubstring.java</a></li>
+
+
+<li>Find Next Higher Number With Same Digits
+<a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/NextHighestNumber.java">NextHighestNumber.java</a></li>
+
+<li>Remove adjacent characters of a String <a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/RecusivelyRemoveAjacentCharacters.java">RecusivelyRemoveAjacentCharacters.java</a></li>
+
+
+<li> Boolean parenthesis question. Given an expression find the total number of ways to parenthesize the expression to a given boolean result. Eg. expression "1^0|0|1" has 3 ways to parenthesize to get result true
+
+<a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/Parenthesis.java">Parenthesis.java</a>
+
+</li>
+
+
+<li>
+	
+	<a href="/Users/apple/github/CareerCup/src/Google/TodayILearntTo/MergeInterval.java">MergeInterval.java</a></li>
+
+<li> Find maximum sum of a subset of a matrix. The matrix has positive and negative numbers
+	<a href="http://stackoverflow.com/questions/2643908/getting-the-submatrix-with-maximum-sum">stackoverflow</a>
+</li>
+
+
+
+</ol>
+
+
+

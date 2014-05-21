@@ -1,60 +1,45 @@
-import java.lang.IllegalArgumentException;
 import java.util.Arrays;
-
 public class NextHighestNumber{
-	
 
 
-	public static void findNext(long number){
+	private static Long nextHighest(final long num){
 
-		StringBuilder s = new StringBuilder();
-		s.append(number);
-		int N = s.length();
-		int index=-1,pivot=-1;
-
+		int N = Long.toString(num).length();
+		if(N<2) return  num;
+		int [] array = new int[N];
+		long rem= num;
+		for(int i=N-1;i>=0;i--){
+			array[i]=(int)rem%10;
+			rem=rem/10;
+		}
 		for(int i=N-2;i>=0;i--){
-			int a = s.charAt(i)-'0';
-			int b = s.charAt(i+1)-'0';
-			if(a<b){
-				pivot = a;
-				index =i;
-				break;
-			}
-		}
-
-		if(pivot==-1) System.out.println(" No such number ")
-
-		else{	
-
-			int nextHighest=Integer.MAX_VALUE, swapIndex=-1;
-			for(int i=index+1;i<N;i++){
-			int a = s.charAt(i)-'0';
-			if(a>pivot && a<nextHighest){
-					nextHighest = a;
-					swapIndex=i;
+			if(array[i]<array[i+1]){
+				int nIndex=0,nHighest=10;
+				for(int j=i+1;j<N;j++){
+					if((array[j]<nHighest) && (array[j]>array[i])){
+						nHighest=array[j];
+						nIndex=j;
+					}
 				}
+				int swap = array[i];
+				array[i]= array[nIndex];
+				array[nIndex]=swap;	
+				Arrays.sort(array,i+1,N);
+				StringBuilder sb = new StringBuilder();
+				for(int d:array){
+					sb.append(Integer.toString(d,10));
+				}
+				return Long.parseLong(sb.toString());
 			}
- 
-			System.out.println("before swap "+s);
-			s.replace(index,index+1,""+nextHighest);
-			s.replace(swapIndex,swapIndex+1,""+pivot);
- 			char [] sort = s.substring(index+1).toCharArray();
-			Arrays.sort(sort);
-			s.replace(index+1,N,String.copyValueOf(sort));
-			System.out.println("next highest number is "+s);
 		}
-		
+		return num;
+	}
+
+	public static void main(String[] args) {
+		long l = 34722641;
+		long ans = nextHighest(l);
+		assert(ans==34724126):" ans is " +ans;
 	}
 
 	 
-	public static void main(String[] args) {
-		
-		Long l =1234675l;
-		findNext(l);
-		
-		l=38276l;
-		findNext(l);
-
-
-	}
 }
