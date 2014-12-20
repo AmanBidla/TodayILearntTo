@@ -2,8 +2,8 @@ public class KMPAlgorithm{
 	
 	public static void main(String abc[]){
 	
-	char text[]= "abra abracad abracadabra".toCharArray();
-	char pattern[]="abracadabra".toCharArray();
+	char text[]= "abra abracad abracadabra ".toCharArray();
+	char pattern[]="sus".toCharArray();
 	
 	int[]table = patternTable(text,pattern);
 	int index =  findPattern(text,pattern,table);
