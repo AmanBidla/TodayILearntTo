@@ -9,8 +9,8 @@ public class KnuthMorrisPratt {
 	public static void main(String[] args) {
 			
 			KnuthMorrisPratt kmp = new KnuthMorrisPratt();
-			String word ="hello";
-			String sentence ="hello this is hello. Hello lives in helloworld ";
+			String word ="world abra";
+			String sentence ="hello this is hello. Hello lives in helloworld abra abracad abracadabra ";
 			final List<Integer> match = kmp.search(word,sentence);
 			final int wordLength = word.length();
 			kmp.showMatch(match,sentence,wordLength);

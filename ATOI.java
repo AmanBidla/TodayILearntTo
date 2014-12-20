@@ -13,7 +13,7 @@ public class ATOI{
         System.out.println(sum1);
         return sum1;
     }
-
+    // DO NOT USE THIS. USE THE ONE BELOW
 	private static int convertToInt(String s, int radix) throws NumberFormatException{
 
 		if(isStringNull(s)){
@@ -94,6 +94,35 @@ public class ATOI{
 
 	}
 	
+	// USE THIS . DONT USE THE FUNCTION convertToInt
+	public int atoi(String str) {
+        if( str==null || str.length()==0 ){
+            return 0;
+        }
+        str = str.trim();
+        char sign = '+';
+        int i=0;
+        if(str.charAt(i)=='-'){
+            sign ='-';
+            i++;
+        }else if(str.charAt(i)=='+'){
+            i++;
+        }
+        double result=0;
+        while( i<str.length() && str.charAt(i)>='0' && str.charAt(i)<='9' ){
+                result = (result*10)+(str.charAt(i)-'0');
+                i++;
+        }
+        if(sign=='-'){
+            result=-result;
+        }
+        if( result<Integer.MIN_VALUE ){
+            return Integer.MIN_VALUE;
+        }else if( result>Integer.MAX_VALUE ){
+            return Integer.MAX_VALUE;
+        }
+        return (int)result;
+    }
 
 
 }

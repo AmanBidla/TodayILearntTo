@@ -18,8 +18,9 @@ public class Spiral {
             {13, 14, 15, 16}
         };
 
-       printMatrix(array,array[0].length,array[0].length);
+       //printMatrix(array,array[0].length,array[0].length);
         //spiral(array,0,4);
+        createSpriral(4);
     }
 
     public static void spiral(int a[][],int x,int y){
@@ -74,6 +75,33 @@ public class Spiral {
             }
             level++;
         }
+    }
+
+    public static int [][] createSpriral(int n){
+        int val=1;
+        int [][]matrix = new int[n][n];
+        int temp=n;
+     for (int level = 0; level < n; ++level, --n) {  
+     // top  
+     for (int i=level; i < n; ++i) matrix[level][i] = val++;  
+     // right  
+     for (int i=level+1; i < n; ++i) matrix[i][n-1] = val++;  
+     // bottom  
+     for (int i=n-2; i >= level; --i) matrix[n-1][i] = val++;  
+     // left  
+     for (int i=n-2; i > level; --i) matrix[i][level] = val++;  
+   }  
+    
+        n=temp;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(matrix[i][j]+"\t");
+            }
+            System.out.println("");
+        }
+
+        return matrix;
+
     }
 
 }

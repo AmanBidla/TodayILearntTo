@@ -1,5 +1,4 @@
-package Google.TodayILearntTo;
-
+ 
 public class PatternMatching {
 
  
@@ -17,11 +16,11 @@ public class PatternMatching {
         //String s="";
         //String p="*";
 
-         String s="aaaaab";
-         String p="?*b";
+         //String s="aaaaab";
+         //String p="?*b";
 
-        //String s="ababab";
-        //String p="ab";
+        String s="ababab";
+        String p="ab";
 
 
         dp = new int[s.length()][p.length()];
@@ -36,7 +35,7 @@ public class PatternMatching {
         boolean result = isPatterMatch(0,0,s,p);
         System.out.println("result is "+dp[s.length()-1][p.length()-1]);
         System.out.println("result is "+result);
-      }
+      } 
 
 
       public static boolean isPatterMatch(int i, int j,String s, String p){
