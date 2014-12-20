@@ -3,6 +3,7 @@
 #################
 
 API/
-.metadata/
+*.metadata
 EXAM/
 test/
+*.class
