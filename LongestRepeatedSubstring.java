@@ -3,7 +3,8 @@ import java.util.Arrays;
 public class LongestRepeatedSubstring{
 	
 	public static void main(String[] args) {
-		String s ="abcdefabcfight";
+		//String s ="abcdefabcfight";
+		String s ="abcabcbb";
 		String result = lcs(s);
 		assert(result.equals("abc")):" incorect result is "+ lcs(s);
 		System.out.println("result is "+result);

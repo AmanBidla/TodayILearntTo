@@ -1,20 +1,43 @@
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 public class CoinExchange{
 
 
 	public static int minimumNumberOfWays(int []deno, int amount){
 		int dp[] = new int[amount+1];
 		dp[0]=0;
+		int []prevCoin = new int[amount+1];
+		//System.out.println("Sum\t Min\t coin added");
 		for(int j=1;j<=amount;j++){
 			dp[j]=Integer.MAX_VALUE;
 			for(int i=0;i<deno.length;i++){
-				if(deno[i]<=j && (1+dp[j-deno[i]] < dp[j]) )
+				if(deno[i]<=j && (1+dp[j-deno[i]] < dp[j]) ){				
 					dp[j]=1+dp[j-deno[i]];
+					//System.out.println(j+"\t "+dp[j]+"\t "+deno[i]);
+					prevCoin[j]=deno[i];
+				}
+					
 			}
 		}
 
+		int result = dp[amount];
+
+		List<Integer> coinsAdded = new ArrayList<Integer>();
+		for(int i=amount;i>=1;){
+			coinsAdded.add(prevCoin[i]);
+			int j=i;
+			i=amount-prevCoin[i];
+			amount = amount - prevCoin[j];
+		}
+
+		Integer [] coins = coinsAdded.toArray(new Integer[coinsAdded.size()]);
+		System.out.println( Arrays.toString(coins));
+
 		//showdp(dp);
 
-		return dp[amount];
+ 
+		return result;
 	}
 
 	private static void showdp(int []dp){
@@ -60,16 +83,17 @@ public class CoinExchange{
 	public static void main(String[] args) {
 		    
 		    int d[] = {1, 5, 10, 25};
+			//int []d ={1, 3,  5};
 		    int amount = 67; 
 		    System.out.println("number of ways is "+minimumNumberOfWays(d,amount));
 		    //assert(coins(d,amount)==6);
 		    /*amount=4;
 		    System.out.println("number of ways is "+coins(d,amount));
 		    assert(coins(d,amount)==4); */
-		    int numWays = allNumberofWaysDynamicProgramming(amount,d);
-		    System.out.println("number of ways is "+numWays);
-		    numWays = allNumberofWaysRecursive(amount,d);
-		    System.out.println("number of ways is "+numWays);
+		    //int numWays = allNumberofWaysDynamicProgramming(amount,d);
+		    //System.out.println("number of ways is "+numWays);
+		    //numWays = allNumberofWaysRecursive(amount,d);
+		    //System.out.println("number of ways is "+numWays);
 			/*
 		    int val[]={1,6,7};
 		    int [] array ={1, 3, 2, 5, 4, 9};
@@ -86,5 +110,6 @@ public class CoinExchange{
 
 
 	}
+
 
 }

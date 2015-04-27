@@ -96,8 +96,19 @@ public class SplitWordsIntoTwoWords{
 	    dict.add("abc");
 	    dict.add("cd");
 	    //dict.add("b");
-	    for(int i=0;i<sentence.length();i++)
-			s.SegmentString(sentence.substring(i),dict);
+	    //for(int i=0;i<sentence.length();i++)
+			//s.SegmentString(sentence.substring(i),dict);
+
+	    String S="catsanddog";
+	    dict = new HashSet<String>();
+		dict.add("cat");
+		dict.add("cats");
+		dict.add("and");
+		dict.add("sand");
+		dict.add("dog");
+		s.SegmentString(S,dict)
+
+
 	}
 
 }

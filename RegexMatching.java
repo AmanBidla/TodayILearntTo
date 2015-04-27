@@ -51,7 +51,7 @@ public class RegexMatching{
 
 	public static void main(String[] args) {
 		
-		String r="a*b";
+		/*String r="a*b";
 		String s="accccccb";
 		boolean b = regex(r,s);
 		//System.out.println("r "+r+" s "+s+" ans "+b);
@@ -63,7 +63,15 @@ public class RegexMatching{
 		r="aa";
 		s="aaa";
 		b=regex(r,s);
-		System.out.println("r "+r+" s "+s+" ans "+b);		
+		System.out.println("r "+r+" s "+s+" ans "+b);
+		*/
+
+		String r="a*b";
+		String s="accccccb";
+		boolean b = regex(r,s);
+		System.out.println("r "+r+" s "+s+" ans "+b);
+
+
 
 	}
 

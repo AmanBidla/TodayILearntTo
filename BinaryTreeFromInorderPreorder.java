@@ -25,7 +25,7 @@ public class BinaryTreeFromInorderPreorder {
 
 		int k=0;
 
-		for(int i=inSt;i<inEnd;i++){
+		for(int  i=inSt;i<inEnd;i++){
 			if(i==root.val){
 				k=i;
 				break;
@@ -48,7 +48,7 @@ public class BinaryTreeFromInorderPreorder {
 		int []pre ={7,10,4,3,1,2,8,11};
 		int [] in ={4,10,3,1,7,11,8,2};
 		BinaryTreeFromInorderPreorder b = new BinaryTreeFromInorderPreorder();
-		Node root = b.construct(pre,in);
+		Node root = b.construct(0, pre.length-1,pre,0,in.length-1,in);
 		//System.out.println(root.toString());
 		//b.inOrder(root);
 		System.out.println(root.val);

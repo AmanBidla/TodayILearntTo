@@ -1,6 +1,14 @@
 public class MissingPositiveInteger{
 
-	public int firstMissingPositive(int[] A) {
+
+    public static void main(String[] args) {
+            
+        int [] array = {2, 3, -7, 6, 8, 1, -10, 15};
+        System.out.println( firstMissingPositive(array)); 
+
+    }
+
+	public static int firstMissingPositive(int[] A) {
      int N = A.length;
      for(int i=0;i<N;i++){
          while(A[i]!=i+1){

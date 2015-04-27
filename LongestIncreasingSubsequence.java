@@ -26,7 +26,7 @@ public class LongestIncreasingSubsequence {
 					
 					if(dp[j]>dp[ans])
 						ans = j;	
-				}
+   				}
 
 				
 			}

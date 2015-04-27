@@ -1,0 +1,47 @@
+Design an alert system. You have 500,000 hotels you represent, and about 250,000 are visited each day. You want to track hotel page visits such that, if more than 10 visitors per a) 5 minutes, b) 1 hour, and c) 24 hours occur, then a (different for each time period) "alert" appears when someone visits one of those "hot" hotel pages. Don't worry about the UI part, just design the underlying alert system. Then optimize your solution for space.
+
+Tell 1-2 min about yourself (that was the only question related to my CV in the entire interview process).
+What is the difference between array and linked list?
+What is a hash table?
+What if you had the worst hash-function ever - what is the complexity of lookup?
+How many dates in the 1900's in the form mm/DD/yy are palindromes?
+
+Write a function to reverse a string in the most memory efficent way? (you can code in any language you like)
+
+Follow up questions to the provided solution:
+- What happens if you can an odd length string
+- What is immutable and mutable strings in Python
+
+I then got a second phone interview, again asking for an interview the next day again.
+
+Second phone interview
+---
+The interview had a heavy french accent which made it difficult to understand his questions and explanations. However, was in general nice and polite.
+
+In the second interview there was also no questions to my CV. It consisted of only one programming task, more difficult than the previous one.
+
+The programming task was like this: Travel alerts are displayed on the TripAdvisor website for a given region (e.g. Japan could show that there is earth quake etc.). Implement the findBestTravelAlert method (interview pasted some template code in the online whiteboard).
+
+Once code was done. There was some follow-up questions like:
+- What is the complexity of the code you have written
+- How can you optimize? how can you optimize it even further.
+
+Given a flat text file that contains a range of IP addresses that map to a location (e.g. 192.168.0.0-192.168.0.255 = Boston, MA), come up with an algorithm that will find a city for a specific ip address if a mapping exists
+
+
+Write a web crawler to count number of pages in a website  
+
+
+How would you implement a bit vector data structure? Optimizing for memory?  
+
+You have a fixed list of words, construct a data structure to achieve efficient (O(1) time complexity) prefix lookup. Write code to implement the lookup.
+
+For example, the result of looking up "app" is {apple, applications, ...}  
+
+You have a fixed file. The format of each line is: city name, ip address range. Construct a data structure and design algorithm to achieve efficient mapping from an ip address to city name.  
+
+You have one billion numbers, implement getRandom() which returns a random number from them.
+
+Constaints:
+1. No duplicate returning value.
+2. getRandom() will at most be invoked 100 million times.

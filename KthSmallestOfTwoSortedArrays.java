@@ -34,15 +34,20 @@ public class KthSmallestOfTwoSortedArrays{
 		}
 	}
 
+ 	 
+
+
+
 	public static void main(String[] args) {
 		
-		//int a[] = {0, 3, 7, 8};
-		//int b[] = {0, 2, 3};
-		int [] a ={100};
-		int [] b={1,2,3,4};
+		int b[] = {0, 3, 7, 9};
+		int a[] = {1, 2, 4,6,8};
+		//int [] a ={100};
+		//int [] b={1,2,3,4};
 		
 		for(int i=1;i<=(a.length+b.length);i++){
-			System.out.println(i+" th smallest element is "+kthsmallest(a,b,i));
+			//System.out.println(i+" th smallest element is "+kthlargest(a,b,i));
+			System.out.println(i+" th largest element is "+kthlargest(a,b,i));
 		}
 
 	}

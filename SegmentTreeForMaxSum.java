@@ -1,4 +1,4 @@
-public class SegmentTree{
+public class SegmentTreeForMaxSum{
 
 	class SegNode{
 		public SegNode left, right;
@@ -67,7 +67,7 @@ public class SegmentTree{
 	public static void main(String[] args) {
 		
 		int[] array = {1, 3, 5, 7, 9, 11};
-    SegmentTree tree = new SegmentTree();
+    SegmentTreeForMaxSum tree = new SegmentTreeForMaxSum();
     SegNode node = tree.init(array, 0, 5);
     System.out.println("Query between 0 and 5 = " + tree.query(node, 0, 5));
    	tree.update(4, 20-array[4],array,node);

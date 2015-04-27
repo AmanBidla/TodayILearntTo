@@ -43,7 +43,7 @@ public class ThreeSum{
 		int A[] = {-1, 0, 1, 2, -1, -4};
     	List<List<Integer>> ans = trip(A);
     	Iterator it = ans.iterator();
-    	while(it.hasNext()){
+     	while(it.hasNext()){
     		List<Integer> list = (List<Integer>) it.next();
     		System.out.println(list);    		 
     	}

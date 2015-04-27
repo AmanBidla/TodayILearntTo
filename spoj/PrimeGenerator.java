@@ -1,90 +1,88 @@
-import java.awt.Point;
-import java.io.*;
-import java.math.BigInteger;
-import java.util.*;
-import static java.lang.Math.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Arrays; 
  
-public class PrimeGenerator implements Runnable {
+public class PrimeGenerator {
  
-        BufferedReader in;
-        PrintWriter out;
-        StringTokenizer tok = new StringTokenizer("");
- 
-        public static void main(String[] args) {
-                new Thread(null, new PrimeGenerator(), "", 256 * (1L << 20)).start();
-        }
- 
-        public void run() {
-                try {
-                        long t1 = System.currentTimeMillis();
-                        in = new BufferedReader(new InputStreamReader(System.in));
-                        out = new PrintWriter("output.txt");
-                        Locale.setDefault(Locale.US);
-                        solve();
-                        in.close();
-                        out.close();
-                        long t2 = System.currentTimeMillis();
-                        System.err.println("Time = " + (t2 - t1));
-                } catch (Throwable t) {
-                        t.printStackTrace(System.err);
-                        System.exit(-1);
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        
+       int limit =  32000;
+       int [] array = new int[4000];
+       int numprime=0;
+       array[numprime++]=2;
+       for(int i=3;i<=limit;i+=2){
+            double cap = Math.sqrt(i)+1.0;
+            boolean isPrime = true;
+            for(int j=0;j<numprime;j++){
+                if(j>=cap) break;
+                if(i%array[j]==0){
+                    isPrime=false;
+                    break;
                 }
-        }
- 
-        String readString() throws IOException {
-                while (!tok.hasMoreTokens()) {
-                        tok = new StringTokenizer(in.readLine());
-                }
-                return tok.nextToken();
-        }
- 
-        int readInt() throws IOException {
-                return Integer.parseInt(readString());
-        }
- 
-        long readLong() throws IOException {
-                return Long.parseLong(readString());
-        }
- 
-        double readDouble() throws IOException {
-                return Double.parseDouble(readString());
-        }
- 
-        // solution
- 
-        void solve() throws IOException {
+            }
+            if(isPrime){
+                array[numprime++]=i;
+            }
+       }
+       //System.out.println("num prime "+numprime);
+     /*for(int i=0;i<20;i++){
+        System.out.print(" array["+i+"] "+array[i]);
+     }
+     System.out.println("");
+        */
+       BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
+       int t = Integer.parseInt(buf.readLine());
+       int [] input = new int[2*t];
+       int index=0;
+       for(int k=0;k<t;k++){
+            String line = buf.readLine();
+            int M = Integer.parseInt(line.split(" ")[0]);
+            int N = Integer.parseInt(line.split(" ")[1]);             
+            input[index]=M;
+            index=index+1;
+            input[index]=N;
+            index=index+1;
 
-                int testCases = readInt();
-                long [] answer = new long [ testCases*2];
-                for(int t=0;t<testCases*2;t++){
-                        answer[t]= readLong(); 
-                }
-                for(int t=0;t<answer.length;){
-                        long m = answer[t];
-                        t++;
-                        long n = answer[t];
-                        t++;
-                        for(long i=m;i<=n;i++){
-                            if(isPrime(i)){
-                                System.out.println(i);
-                            }
-                        }
-                        System.out.println();
-                }                
         }
+        index=0;         
+       for(int k=0;k<t;k++){
 
-        public boolean isPrime(long x){
+            int M = input[index];
+            index=index+1;
+            int N = input[index];
+            index=index+1;
+            if(k>0){
+                System.out.println("");
+            }
+            if(M<2) M=2;
 
-                if (x <= 1) return false;
-                if (x <= 3) return true;
-                if (x % 2 == 0) return false;
-                if (x % 3 == 0) return false;
-                long s = (long) (Math.sqrt( (double)x ) ) ;
-                for (long i = 5; i <= s; i += 6){
-                        if (x % i == 0) return false;
-                        if (x % (i+2) == 0) return false;
+            //System.out.println("max "+array[numprime-1]);
+
+            boolean [] primeArray = new boolean[100001];
+            for (int j = 0; j < 100001; j++) {
+                primeArray[j] = true;
+            }
+
+
+            for(int i=0;i<numprime;i++){                
+                int p = array[i];
+                int start;
+
+                if (p >= M) start = p*2;
+                else start = M + ((p - M % p)%p);
+
+                for (int j = start; j <= N; j += p) {
+                    primeArray[j - M] = false;
                 }
-                return true;
-  }
+            }
+
+             for (int i = M; i <= N; i++) {
+                if (primeArray[i-M]) System.out.println(i);
+            }
+       } 
  
+    }
+  
+
 }

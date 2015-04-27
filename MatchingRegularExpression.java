@@ -8,6 +8,9 @@ public class MatchingRegularExpression{
 		System.out.println("isMatch(.,aa)\t"+isMatch(".","aa"));
 		System.out.println("isMatch(.*,ab)\t"+isMatch(".*","ab"));
 		System.out.println("isMatch(c*a*b,aab)\t"+isMatch("c*a*b","aab"));
+		System.out.println("isMatch(aa,a)\t"+isMatch("aa","a"));
+		System.out.println("isMatch(aa,aa)\t"+isMatch("aa","aa"));
+ 
 	}
 
 
