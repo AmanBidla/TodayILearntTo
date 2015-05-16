@@ -11,9 +11,9 @@ public class LongestRepeatedSubstring{
 
 	}
 
-	private static String lcs(String s){
+	private static String lcs(String s
+		if( (s==null) || (s.length()==0)) return null;){
 
-		if( (s==null) || (s.length()==0)) return null;
 		int N = s.length();
 		String [] suffixes = new String[N];
 		for(int i=0;i<N;i++){

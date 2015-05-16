@@ -4,13 +4,13 @@ public class LongestSubstringContainingNonRepeatingCharacters{
 	public static void main(String[] args) {
 		
 
-		//String S ="GEEKSFORGEEKS";
+		String S ="GEEKSFORGEEKS";
 		//String S ="ABDEFGABEF";
 		//String S="rbmbibybvbsbtbvbibyb";
 		//String S="abcabcbb";
 		//String S="bbbbb";
 		//String S="abcda";
-		String S="abcabc";
+		//String S="abcabc";
 
 		System.out.println( max(S));
 	}

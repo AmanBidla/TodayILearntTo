@@ -2,6 +2,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SplitWordsIntoTwoWords{
 
@@ -29,6 +32,45 @@ public class SplitWordsIntoTwoWords{
              	if (segSuffix != null) {
  				    memoized.put(input, prefix + " " + segSuffix);
  	            	System.out.println(prefix+"  "+segSuffix);
+                    return prefix + " " + segSuffix;
+                }
+           }
+ 
+       }
+       memoized.put(input, null);
+      return null;
+    }
+
+
+    static Set<String> allWords = new HashSet<String>();
+    public String splitToWords(String input, Set<String> dict) {
+ 	//System.out.println("sentence is "+input);
+     	if (dict.contains(input))
+           return input;
+
+       if (memoized.containsKey(input)) {
+          return memoized.get(input);
+     	}
+
+       int len = input.length();
+ 		for (int i = 1; i < len; i++) {
+          String prefix = input.substring(0, i);
+          if (dict.contains(prefix)) {
+                String suffix = input.substring(i, len);
+                String segSuffix = splitToWords(suffix, dict);
+               // System.out.println(prefix+"  "+suffix+" segment > "+segSuffix);
+             	if (segSuffix != null) {
+
+             		if(!prefix.contains(" ")){
+             			allWords.add(prefix);
+             		}
+
+             		if(!segSuffix.contains(" ")){
+             			allWords.add(segSuffix);
+             		}
+             		 
+ 	            	 
+ 				    memoized.put(input, prefix + " " + segSuffix); 	            	
                     return prefix + " " + segSuffix;
                 }
            }
@@ -106,7 +148,19 @@ public class SplitWordsIntoTwoWords{
 		dict.add("and");
 		dict.add("sand");
 		dict.add("dog");
-		s.SegmentString(S,dict)
+		s.SegmentString(S,dict);
+
+		sentence ="thenuke";
+		dict = new HashSet<String>();
+		dict.add("the");
+		dict.add("then");
+		dict.add("nuke");
+
+
+		for(String word:allWords){
+			System.out.println(word);
+		}
+
 
 
 	}

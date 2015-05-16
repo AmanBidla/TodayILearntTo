@@ -1,0 +1,123 @@
+Design questions
+
+Paint a chessboard
+Design a system that listens to updates from multiple stocks and updates listeners that have subscribed to those stocks.
+
+Median of BST in O(1) time
+	
+Accepted Offer
+Positive Experience
+Easy Interview
+Application
+I applied through an employee referral. The process took 4 weeks – interviewed at Bloomberg L.P. in October 2014.
+Interview
+I think the interview is smooth and all the people are really friendly to me. It’s really a great experience.
+
+I find someone in the company refer me. Then applied online. I applied on Sep, and the process took 4 weeks before I could arrange a phone interview.
+
+ 
+Onsite:
+ The onsite interview is on Oct. 28th. Need business professional, and I had them on. Strangely, all the interviewers do not wear the suits but ask all the interviewees to wear. First take a tour around the company, famous curved elevator, then the fish tank, and the sky view on 29th floor. Nothing special. Then go to another part of the building to have the interview.
+
+1st round: a white guy and an indian guy. First introduce themselves to me, then talk about myself, then tech problem. Given a binary tree, how to output it level by level. First just save it in the structure, this would takes space, so just use iterative method to traverse the tree. Using 2 queues, or just calculate the length for 1 level. Next one is ask given a string, and output would delete the spaces, how could u recover the original one. I stuck there not because this is too hard, but I didn’t get the point about what kind of solution he want. Finally he told me that himself. Use encoding method to encode all the original text and this could represent all different characters.
+
+2nd round:
+Two traditional americans. They both working on a same team and they were just get there. First some behaviors. Then 1st tech is that, given an array of integers, how do you find the first unique element from it. First thought is naive, scan from the first element, then if there is any dup, then move to the next element. Second method is trivial, just try to use a hash map to store all the elements that in the string, if there is dup, just add the count.
+
+Next question is about how to deal with a random music player. First start with the shuffle algorithm, then talking about using array to deal with the random and non-repeating thing.
+
+3rd round:
+a manager from help team. Talking about background, then about some behavior questions.
+
+Brain teaser: 3 ltr bucket, 7 ltr bucket, how to get 4 ltr water?
+follow up: 4min hourglass, 7 min hourglass, how to get 9 min?
+
+
+Explain how the garbage collector works in java and implement it using C/C++  
+
+
+DecodeMessage.java
+
+
+http://www.careercup.com/question?id=19300678
+
+Stack with max value O(1)
+
+
+Move all element less than target to left and all elements greater than target to right
+
+The questions are basic,such as find whether two trees is subtree of each other.  
+
+max product subarray
+
+
+Given an array arr[] of n integers, construct a Product Array prod[] (of same size) such that prod[i] is equal to the product of all the elements of arr[] except arr[i]. Solve it without division operator and in O(n).
+
+stock ticker design
+
+java garbage collection
+
+
+find 5 max salary from employee table
+SELECT  *FROM 
+    (
+    SELECT *FROM emp 
+    ORDER BY Salary desc
+    )
+WHERE rownum <= 3
+ORDER BY Salary ;
+
+Find nth highest salary
+SELECT DISTINCT salary FROM emp X WHERE n = 
+    ( SELECT COUNT(DISTINCT salary) FROM emp WHERE salary >=X.salary ) 	
+Replace n with the given number. for example to get the 3rd highest salary
+
+Can thread from same object run methodA() and methodB() simultaneously ?
+class A {
+    public synchronized void methodA() {
+        //method A
+    }
+
+    public synchronized void methodB() {
+        // method B
+    }
+}
+
+Answer No 
+Suppose t1,t2 are 2 threads on same Object A
+t1 will accquire lock on methodA() = t1 acquires object monitor 
+    t2 will try to acquire lock on methodB() but has to wait until t1 releases object monitor
+t1 releases lock = t1 release object monitor
+	t2 will acquire lock on methodB() = t2 will acquire object monitor
+
+What is both method are static ? Then also No
+t1 will acquire class level lock while entering methodA() while t2 has to wait until t1 releases class level lock
+
+What is methodA() is static synchronized and other is not  ? YES
+Now t1, t1 can access method()B simultaneously but only 1 thread can access methodA() at a time
+
+Median of 2 sorted arrays
+
+X number of Y th row of Pascal Triangle
+As columns start with 0 in Pascal's Triangle
+
+			Y!
+   =   --------------
+	 (Y-X-1)! *  (X-1)!
+
+
+
+
+
+
+
+Whys is String immutable
+
+1. Security = TCP connection, passwords, network connection settings are represented as String. If String was mutable these parameters could easily be changed
+2. Synchronization = final means thread safe
+3. Caching = Compiler optimizes i.e when it sees 2 objects having same value i,e value1="test" and value2="test" it will point both to same object
+4. Class loading = String is used in class loading. If String was mutable then wrong class may be loaded by class loader.
+
+
+Objects are stored in HEAP
+local varibles, 

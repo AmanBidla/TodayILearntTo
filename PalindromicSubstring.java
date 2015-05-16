@@ -30,7 +30,7 @@ public class PalindromicSubstring{
 
 		for(int k=1;k<=N;k++){
 			for(int i=0;i<=N-k;i++){
-				int j=i+k-1;
+				int j=i+k-1;				 
 				if(S.charAt(i)==S.charAt(j)){
 
 					if(k==1 || k==2){

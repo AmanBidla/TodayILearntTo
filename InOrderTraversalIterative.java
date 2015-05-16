@@ -13,19 +13,19 @@ public class InOrderTraversalIterative{
 
 
 	    public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<Integer>();
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        while(!stack.isEmpty() || root!=null){
-            if(root!=null){
-                stack.push(root);
-                root=root.left;
-            }else{
-                root = (TreeNode) stack.pop();
-                list.add(root.val);
-                root = root.right;
+            List<Integer> list = new ArrayList<Integer>();
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+            while(!stack.isEmpty() || root!=null){
+                if(root!=null){
+                    stack.push(root);
+                    root=root.left;
+                }else{
+                    root = (TreeNode) stack.pop();
+                    list.add(root.val);
+                    root = root.right;
+                }
             }
+            return list;
         }
-        return list;
-    }
 
 }

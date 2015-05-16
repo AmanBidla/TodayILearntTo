@@ -45,3 +45,40 @@ You have one billion numbers, implement getRandom() which returns a random numbe
 Constaints:
 1. No duplicate returning value.
 2. getRandom() will at most be invoked 100 million times.
+
+
+import java.util.BitSet;
+import java.util.Random;
+
+public class BitSetOperation
+{
+
+    public static void doStuff(){
+        BitSet s = new BitSet();
+        int billion = 100000000;
+        for (int l=0; l<billion;l++)
+        {
+            s.set(l);
+        }
+        while(true){
+            Random rand = new Random();
+            int n = (rand.nextInt(billion));
+            if (s.get(n))
+                System.out.println(n);
+            try{
+                Thread.sleep(1000);
+            }catch(Exception ex){
+
+            }
+        }
+
+    }
+    public static void main(String args[]){
+        doStuff();
+    }
+}
+
+
+The first interviewer described to me a system that he called h-score. h-score is a score that publishers get if articles that they publish get citations in other articles.
+A publisher gets h-score of x if they wrote at least x articles that got x citations each.
+Given an array with the number of citations per article, write a function to calculate the h-score for the publisher.  

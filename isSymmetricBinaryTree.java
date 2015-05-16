@@ -10,7 +10,7 @@ public class isSymmetricBinaryTree{
 
 		if(left==null || right==null) return left==null && right==null;
 
-		return left.val==right.val && isMirror(left.left, left.right)  && isMirror(right.left,right.right);
+		return left.val==right.val && isMirror(left.left, right.right)  && isMirror(left.right,right.left);
 
 	}
 }

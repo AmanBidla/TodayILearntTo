@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.util.*;
 import static java.lang.Math.*;
  
-public class TheatreSquare implements Runnable {
+public class Main implements Runnable {
  
         BufferedReader in;
         PrintWriter out;
@@ -54,43 +54,15 @@ public class TheatreSquare implements Runnable {
  
         void solve() throws IOException {
                 
-                long m = readLong();
-                long n = readLong();
-                long a = readLong();
+                 String [] cand ={"Sheldon", "Leonard", "Penny", "Rajesh", "Howard" };
+                 int r=1;
+                 int N = readInt();
+                 while(r*5 < N){
+                    N=N-(r*5);
+                    r= r*2;
+                 }
+                 System.out.println( cand[ (N-1)/r]);
 
-                if(m==1 && n==1) System.out.println(1);
-                else if(m==n && n==a) System.out.println(1);
-                //else if(a==1) System.out.println(m*n);
-                else{
-                    
-                    long rows =0;
-                     if((m%a)!=0){
-                        //System.out.println("m "+m);
-                        rows = m/a;
-                        rows++;
-                        //System.out.println("m "+m);
-                     }else{
-                        rows = m/a;
-                     }
-                     long cols=0;
-                     if(n%a!=0){
-                        cols = n/a;
-                        cols++;
-                        //System.out.println("n "+n);
-                     }else{
-                        cols=n/a;
-                     }
-                        
-                      System.out.println( rows*cols);
-                     
-
-
-                    //System.out.println(N);
-                    //N+=1;
-                    
-                }
-                    
-                
         }
  
 }

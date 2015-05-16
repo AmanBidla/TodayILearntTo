@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MedianOf2SortedArray{
 	
 	public static int findMedian(int []a, int []b,int k){
@@ -37,6 +39,17 @@ public class MedianOf2SortedArray{
 		int []b  ={3, 10, 11, 14, 15};
 		int k = (a.length+b.length)/2;
 		int ans =findMedian(a,b,k);
+		int M = a.length;
+		int N = b.length;
+		int [] array = new int[M+N];
+		for(int i=0;i<M;i++){
+			array[i]=a[i];
+		}
+		for(int i=M,j=0;j<N;i++,j++){
+			array[i]=b[j];
+		}
+		Arrays.sort(array);
+		System.out.println(Arrays.toString(array));
 		System.out.println("ans "+ans);
 	}
 
