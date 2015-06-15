@@ -1,68 +1,73 @@
 import java.util.Arrays;
 
 public class SegmentTree{
- 
+ 	
+ 	private static int []A ;
 
  	public static  int getSize(int N){
  		int size=1;
  		for(;size<N;size<<=1);
  		return size<<1;
  	}
+ 	
+ 	public static void main(String[] args) {
+ 		int [] array  = {31,41,59,26,53,58,97,93};
+ 		A = array;
+ 		int N = A.length;
+ 		int node=0, begin = 0, end = N-1;
+ 		int [] dp = new int[N+1];
+ 		initialize(node,begin,end,A,dp);
+ 		int i= begin, j=end;
+ 		
+ 		System.out.println("minimum of "+ Arrays.toString(Arrays.copyOfRange(array,i,j+1))+" is "+array[query(node,begin,end,dp,i,j)]);
 
- 	public static void buildTree(int [] segTree, int [] input, int left, int right, int pos){
+ 		i=0;j=3;
+ 		System.out.println("minimum of "+ Arrays.toString(Arrays.copyOfRange(array,i,j+1))+" is "+array[query(node,begin,end,dp,i,j)]);
 
- 		if(left==right){
- 			segTree[pos]=input[left];
- 			return;
+ 		i=1;j=2;
+ 		System.out.println("minimum of "+ Arrays.toString(Arrays.copyOfRange(array,i,j+1))+" is "+array[query(node,begin,end,dp,i,j)]);
+
+ 		i=4;j=N-1;
+ 		System.out.println("minimum of "+ Arrays.toString(Arrays.copyOfRange(array,i,j+1))+" is "+array[query(node,begin,end,dp,i,j)]);
+ 	}
+
+ 	public static void initialize(int node, int begin, int end, int []A, int[] dp){
+
+ 		int N = A.length;
+ 		if(begin==end) dp[node]=begin;
+ 		else{
+
+
+ 			initialize(2*node,begin,(begin+end)/2,A,dp);
+ 			initialize((2*node)+1,(begin+end)/2 +1 ,end,A,dp);
+
+ 			int l = dp[2*node];
+ 			int h = dp[(2*node)+1];
+ 			if(A[l] <= A[h]) dp[node] = l;
+ 			else 			 dp[node] = h;
+
  		}
 
- 		int mid = (left+right)/2;
- 		int leftPos = (2*pos)+1;
- 		int rightPos = (2*pos)+2;
- 		buildTree(segTree,input, left, mid,leftPos);;
- 		buildTree(segTree,input, mid+1, right,rightPos);
-
- 		segTree[pos]= Math.min( segTree[leftPos], segTree[rightPos] );
  	}
 
- 	public static int getLow(int start, int end,int [] array,int []segTree){
- 		int N = array.length;
- 		return getLow(0, N-1,start, end, 0,segTree);
- 	}
+ 	public static int query(int node, int begin, int end, int [] dp, int i, int j){
+ 		int p1, p2;
 
- 	public static int getLow(int low, int high, int querylow, int queryhigh, int root, int []segTree){
+ 		// current interval does not intersect query interval
+ 		if(i>end || j<begin) return -1;
 
- 		//if(querylow < low && queryhigh >= high) return segTree[root];
- 		if(low > querylow  && high <= queryhigh)return segTree[root];
+ 		// current interval is in the query interval
+ 		if(begin >=i && end<=j) return dp[node];
 
- 		if(querylow> high || queryhigh < low) return Integer.MAX_VALUE;
+ 		// compute min position of left and right part of interval
+ 		p1 = query(2*node, begin, (begin+end)/2,dp,i,j);
+ 		p2 = query((2*node)+1, (begin+end)/2+1, end, dp, i,j);
 
- 		int mid = (low+high)/2;
- 		int leftPos = (2*root)+1;
- 		int leftLow = getLow(low, mid, querylow,queryhigh, leftPos, segTree );
- 		int rightPos = (2*root)+2;
- 		int rightLow = getLow(mid+1, high, querylow, queryhigh, rightPos, segTree);
-
- 		return Math.min( leftLow , rightLow);
- 	}
-
-
-
-
-
-
- 	public static void main(String[] args) {
- 		
- 		int [] array ={-1,2,4,0};
- 		System.out.println(Arrays.toString(array));
- 		int N = array.length;
- 		int SN = getSize(N);
- 		System.out.println("size of segment tree is "+SN);
- 		int [] segTree = new int [ SN ];
-
- 		buildTree(segTree,array,0,N-1,0);
- 		System.out.println(Arrays.toString(segTree));
- 		System.out.println( getLow(0,3,array,segTree));
+ 		// return overall minimum
+ 		if(p1==-1) return dp[node] = p2;
+ 		if(p2==-1) return dp[node] = p1;
+ 		if(A[p1]<=A[p2]) return dp[node]=p1;
+ 		else 			 return dp[node]=p2;
 
  	}
 

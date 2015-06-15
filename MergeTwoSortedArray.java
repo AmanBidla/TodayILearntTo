@@ -2,60 +2,31 @@ import java.util.Arrays;
 
 public class MergeTwoSortedArray{
 
-	public void merge(int[] A1, int [] A2){
+	public void merge(int[] A1, int [] A2, int M, int N){
 
-		int N1 = A1.length; // 2 power N
-		int N2 = A2.length; // N
+	 	if(A1==null || A2==null || A1.length==0 || A2.length==0) return ;		 
+		int i=M-1;
+		int j=N-1;
+		int k=(M+N)-1;
+		System.out.println("M "+M+" N "+N+" K "+k);
+		while(i>=0 || j>=0){
 
-		int [] mergeArray = new int[N1+N2];
-
-		int left=0; // index of A1
-		int right=0; // index of A2
-		int index=0; // index of merge Array
-
-		while(left<N1 && right<N2){
-
-			int a1 = A1[left];
-			int a2 = A2[right];
-
-			if(a1<=a2){
-				mergeArray[index]=A1[left];
-				left++;
+			if(j<0|| (i>0 && A1[i]>A2[j])){
+				A1[k--]=A1[i--];
 			}else{
-				mergeArray[index]=A2[right];
-				right++;
-			}
-			index++;
-		}
-
-		// if there are still elements in A1 that is not added to merge array
-		if(left<A1.length){
-			while(left<A1.length){
-				mergeArray[index]=A1[left];
-				left++;
-				index++;
+				A1[k--]=A2[j--];
 			}
 		}
-		
-		// if there are still elements in A2 that is not added to merge array
-		if(right<A2.length){
-			while(right<A2.length){
-				mergeArray[index]=A2[right];
-				right++;
-				index++;
-			}
-		}
-
-		System.out.println(Arrays.toString(mergeArray));
-
-	}
+		System.out.println(Arrays.toString(A1));
+ 	}
 
 	public static void main(String[] args) {
 		
-		int []A1 ={100,200,300,400,500,600,700,800};
+		int []A1 ={100,200,300,400,500,600,700,800,0,0,0,0,0};
 		int []A2 ={101,301,801};
 		MergeTwoSortedArray mg = new MergeTwoSortedArray();
-		mg.merge(A1,A2);
+		mg.merge(A1,A2,8,3);
+
 
 	}
 
