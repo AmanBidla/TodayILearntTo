@@ -1,13 +1,18 @@
 public class MaximumProductSubArray{
 
 	public static void main(String[] args) {
-		
+ 		
 		//int [] array ={2,3,-2,-4};
-		int [] array ={2,-3,-3,-4};
+		//int [] array ={2,-3,-3,-4};
+		//int [] array = {6, -3, -10, 0, 2}; // should be 180
+		//int [] array ={-1, -3, -10, 0, 60}; // should be 60
+		 //int [] array ={-2, -3, 0, -2, -40};
+
+
 		System.out.println(max(array));
 		System.out.println(maxProduct(array));
 	}
-
+	// both methods gives same result. I choose this one.
 	public static int max(int [] array){
 
 		int N = array.length;

@@ -36,7 +36,7 @@ public class MyHashMap<K,V>{
 	{
 
 		if (elemCount>(N*loadFactor)) 
-			resize();
+		resize();
 		int index = hash(key.hashCode())%N;
 		if (table[index]==null) 
 			table[index] = new Entry<K,V>(key,value);
@@ -49,37 +49,34 @@ public class MyHashMap<K,V>{
 					cur.setValue(value);
 					break;
 				}
-		if (cur.next()==null) break;
-		cur = cur.next();
+				if (cur.next()==null) break;
+				cur = cur.next();
+			}
+			cur.setNext(new Entry(key,value));
 		}
-		cur.setNext(new Entry(key,value));
-		}
-		}
+	}
 		public V get(K key)
 		{
-		int index = hash(key.hashCode())%table.length;
-		if (table[index]==null) return null;
-		else
-		{
-		Entry cur = table[index];
-		while(true)
-		{
-		if (cur.getKey().equals(key))
-		{
-		return cur.getValue();
+			int index = hash(key.hashCode())%table.length;
+			if (table[index]==null) return null;
+			else
+			{
+				Entry cur = table[index];
+				while(true)
+				{
+					if (cur.getKey().equals(key)) return cur.getValue();
+					if (cur.next()==null) break;
+					cur = cur.next();
+				}
+				return null;
+			}
 		}
-		if (cur.next()==null) break;
-		cur = cur.next();
-		}
-		return null;
-	}
-	}
 	public void resize()
 	{
-	int newSize = table.length*1.5;
-	Entry[] newTable = new Entry[newSize];
-	for (int i=0; i<table.length; i++) newTable[i]=table[i];
-	table = newTable;
+		int newSize = table.length*1.5;
+		Entry[] newTable = new Entry[newSize];
+		for (int i=0; i<table.length; i++) newTable[i]=table[i];
+		table = newTable;
 	}
 	//contructors, getters and setters below
 	...

@@ -1,0 +1,11 @@
+An implementation of the DC3 algorithm for Suffix Array Construction.
+
+Based on: "Simple Linear Work Suffix Array Construction" (2003)
+            by Juha Karkkainen, Peter Sanders, and Stefan Burkhardt
+http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.137.7871
+
+Implementation Copyright 2010 Google Inc.
+Distributed under the Apache 2.0 License.
+
+For more details see LICENSE and public/dc3.h
+

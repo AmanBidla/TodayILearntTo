@@ -4,7 +4,21 @@ public class RotatedArraySearch{
 		
 		int [] array ={12,11,1,2,3,4};
 		//int [] array={3,3,3,3,3,1,3,3};
-		System.out.println(findMin(array,0,array.length-1,3));
+		int target =3;
+		int result = findMin(array,0,array.length-1,3);
+		if(result !=-1)
+			System.out.println("Found "+target+" at position "+result);
+		else 
+			System.out.println("Could not find "+target);
+
+		int [] A2={3,3,3,3,3,1,3,3};
+		   target =3;
+		   result = findMin(A2,0,A2.length-1,3);
+		if(result !=-1)
+			System.out.println("Found "+target+" at position "+result);
+		else 
+			System.out.println("Could not find "+target);
+
 	}
 
 

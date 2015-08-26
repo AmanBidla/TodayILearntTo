@@ -1,6 +1,8 @@
 import java.util.Arrays;
 import java.util.Collections;
 
+// This algo has time complexity of O(N^2)
+
 public class NumberOfTrianglesInArray{
 
 	public static int count(Integer [] array){

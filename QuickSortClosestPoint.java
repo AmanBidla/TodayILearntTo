@@ -25,8 +25,11 @@ public class QuickSortClosestPoint  {
 
     public static void main(String[] args) {
     	
-    		Point [] parray = {new Point(2,-2),new Point(1,1) ,new Point(-2,2) ,new Point(1,-1), new Point(-1,1),new Point(2,2) , new Point(-2,-2), new Point(-1,-1), new Point(3,4)};
-    		int k=4;
+    		//Point [] parray = {new Point(2,-2),new Point(1,1) ,new Point(-2,2) ,new Point(1,-1), new Point(-1,1),new Point(2,2) , new Point(-2,-2), new Point(-1,-1), new Point(3,4)};
+    	//Point [] parray = {new Point(3,2),new Point(-1,0) ,new Point(6,-5) ,new Point(5,5), new Point(-4,3)};
+    	Point [] parray = {new Point(300,200),new Point(-100,0) ,new Point(600,-500) ,new Point(500,500), new Point(-400,300)};
+    		//int k=4;
+    		int k=2;
     		for(int i=0;i<k;i++){
     			Point kPoint = kthClosestToOrigin(i,parray);	
     			showKPoint(kPoint,i);
@@ -66,22 +69,22 @@ public class QuickSortClosestPoint  {
     	 System.out.println();
     }
 
-	public static void sort(Comparable []a){
+	public static void sort(Comparable<Point> []a){
 
 		sort(a,0,a.length-1);
 	}
 
-	public static void sort(Comparable []a, int lo, int hi){
+	public static void sort(Comparable<Point> []a, int lo, int hi){
 		if(hi <=lo) return;
 		int j = partition(a,lo,hi);
 		sort(a,lo,j-1);
 		sort(a,j+1,hi);
 	}
 
-	public static int partition(Comparable []a, int lo, int hi){
+	public static int partition(Comparable<Point> []a, int lo, int hi){
 		int i=lo;
 		int j=hi+1;
-		Comparable v = a[lo];
+		Comparable<Point> v = a[lo];
 
 		while(true){
 
@@ -95,7 +98,7 @@ public class QuickSortClosestPoint  {
 		return j;
 	}
 
-	public static boolean less(Comparable v, Comparable w){
+	public static boolean less(Comparable v, Comparable  w){
 		return (v.compareTo(w)>0);
 	}
 
