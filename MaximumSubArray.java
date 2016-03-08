@@ -2,7 +2,9 @@ public class MaximumSubArray{
 
 	public static void main(String[] args) {
 			
-		int [] array = {904,40,523,12,-355,-385,-124,481,-31};
+		//int [] array = {904,40,523,12,-355,-385,-124,481,-31};
+		int [] array ={-2,1,-3,4,-1,2,1,-5,4};
+
 		System.out.println(find(array));
 	}
 

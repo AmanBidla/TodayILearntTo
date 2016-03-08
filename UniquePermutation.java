@@ -3,49 +3,57 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 
-public class UniquePermutation{
+public class UniquePermutation {
 
 
-  private static Set<List<Integer>> unique(List<Integer> set, int index){
+  public static List<List<Integer>> uniquePermutation(int [] array) {
 
-  	Set<List<Integer>> result;
+    List<List<Integer>> result = new ArrayList<List<Integer>>();     
+        result.add(new ArrayList<Integer>());
+        for(int i=0;i<array.length;i++){
+           Set<List<Integer>> curr = new HashSet<List<Integer>>();
+           for(List<Integer> r : result) {
+            for(int j=0;j<r.size()+1;j++){
 
-  	if(set.size()==index){
-  		result = new HashSet<List<Integer>>();
-  		result.add( new ArrayList<Integer>());
-  	}else{
-
-  		result = unique( set, index+1);
-  		int value = set.get(index);
-  		Set<List<Integer>> more = new HashSet<List<Integer>>();
-  		for(List<Integer> subset:result){
-  			List<Integer> newSubset = new ArrayList<Integer>();
-  			newSubset.add(value);
-  			newSubset.addAll(subset);
-  			more.add(newSubset);
-  		}
-
-  		result.addAll(more);
-  	}
-
-  	return result;
+              r.add(j,array[i]);
+                List<Integer> temp = new ArrayList<Integer>(r);
+                r.remove(j);
+                curr.add(temp);
+            }
+           }
+           // If you uncomment below line then all permutation ( not just size of array will be shown)
+           // []
+           // [1 ]
+           // [1 ]
+           // [1 1 ]
+           // [2 1 ]
+           // [2 ]
+           // [2 1 1 ]
+           // [1 1 2 ]
+           // [1 2 ]
+           // [1 2 1 ]
+           //result.addAll(new ArrayList<List<Integer>>(curr));
+            result= new ArrayList<List<Integer>>(curr);
+        }      
+    return result;
   }
+
+ 
 
   public static void main(String[] args) {
-  	
-  	List<Integer>  set = new ArrayList<Integer>();
-  	set.add(1);
-  	set.add(1);
-  	set.add(2);
-    Set<List<Integer>> setlist = unique(set,0);
-    for(List<Integer> list:setlist){
-      System.out.print("[");
-       for(int i=0;i<list.size();i++){
-             System.out.print(i+" ");
-       }
-       System.out.print("]\n");
-    }
+    
+    int [] array = {1,2,3};
+    List<List<Integer>> lists = uniquePermutation(array);
+    for(List<Integer> list : lists){
 
+      System.out.print("[");
+      for(Integer elem : list) {
+        System.out.print(" "+elem+" ");
+      }
+      System.out.print("]\n");
+    }
   }
+
+ 
 
 }

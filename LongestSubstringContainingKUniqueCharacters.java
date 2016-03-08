@@ -6,9 +6,11 @@ public class LongestSubstringContainingKUniqueCharacters{
 
 	public static void main(String[] args) {
 		
-		String S="aaaaabbaaac";
+		//String S="aaaaabbaaac";
 		//String S="aabbcc";
-		System.out.println(longest(S,2));
+		String S ="abcbbbbcccbdddadacb";
+		//String S ="aabacbebebe";
+		System.out.println(longest(S,3));
 	}
 
 	//bbbcccbdddadacb
@@ -45,9 +47,8 @@ public class LongestSubstringContainingKUniqueCharacters{
 		int leftMax=0,rightMax=0;
 
 		for(int i=1;i<N;i++){
-
-			int index = S.charAt(i)-'a';
-			count[index]++;
+			 
+			count[S.charAt(i)-'a']++;
 			right++;
 
 			while(!isValid(count,K)){				 
@@ -56,12 +57,14 @@ public class LongestSubstringContainingKUniqueCharacters{
 			}
 
 			if(((right-left)+1) > rightMax){
+
 				rightMax = (right-left)+1;
 				leftMax = left;
+				System.out.println("left "+leftMax+" right "+rightMax);
 			}
 		}
-
-		return S.substring( leftMax, rightMax);
+		System.out.println("left "+leftMax+" right "+rightMax);
+		return S.substring( leftMax, leftMax+rightMax);
 		 	
 	}
 

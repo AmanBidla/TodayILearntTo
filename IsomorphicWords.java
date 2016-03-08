@@ -34,11 +34,12 @@ public class IsomorphicWords{
 
     public static void main(String[] args) {
     	
-    	System.out.println("foo and app "+isIsomorphic("foo","app"));
+    	/*System.out.println("foo and app "+isIsomorphic("foo","app"));
     	System.out.println("foo and bar "+isIsomorphic("foo","bar"));
     	System.out.println("bar and foo "+isIsomorphic("bar","foo"));
     	System.out.println("tletur and turtle "+isIsomorphic("tletur","turtle"));
     	System.out.println("ab and ca "+isIsomorphic("ab","ca"));
-		System.out.println("ofo and foo "+isIsomorphic("ofo","foo"));
+		System.out.println("ofo and foo "+isIsomorphic("ofo","foo"));*/
+        System.out.println("ab and ca "+isIsomorphic("ab","ca"));
     }
 }

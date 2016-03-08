@@ -1,0 +1,75 @@
+<ol>
+ <h1><a href="https://github.com/WintersLu/InterviewQuestionBank/tree/master/src/Linkedin">github linkedin one </a>
+ 	 <a href="https://github.com/mpermana/pet/tree/master/programming/linkedin">github linkedin two </a>
+ 	 <a href="http://www.cs.cmu.edu/~guna/15-123S11/">c programing lectures</a>
+ </h1>
+
+<li>
+Implement pow(double a, int b)
+</li>
+
+<li>
+This class will be given a list of words (such as might be tokenized
+from a paragraph of text), and will provide a method that takes two
+words and returns the shortest distance (in words) between those two
+words in the provided text.
+Example:
+  WordDistanceFinder finder = new WordDistanceFinder(Arrays.asList("the", "quick", "brown", "fox", "quick"));
+  assert(finder.distance("fox","the") == 3);
+  assert(finder.distance("quick", "fox") == 1);
+</li>
+
+<li>
+All unique prime factors of number (not done)
+</li>
+
+<li> Sliding time window system design questions
+</li>
+
+<li>
+You have a potentially very-large set of documents, which are potentially very-large, and contain text. For searching these documents, they've been pre-processed into a (very-large) table mapping words to the set of documents that contain each word. E.g. (word) : (documents (referenced by ID) containing that word) Apple: 1, 4, 5, 6, 32 Banana: 5, 6, 7, 9, 32 Cantaloupe: 1, 2, 6 ... Clients will pass in a set of words (e.g. {apple, cantaloupe}), and want the set of document IDs that contain all the words. (e.g. {apple, cantaloupe} -> {1, 6}) Design a distributed system to implement this, bearing in mind that the number of documents, the number of words, and the number of document-IDs-per-word are potentially really, really big.  
+
+</li>
+
+<li>
+** * Given a nested list of integers, returns the sum of all integers in the list weighted by their depth * For example, given the list {{1,1},2,{1,1}} the function should return 10 (four 1's at depth 2, one 2 at depth 1) * Given the list {1,{4,{6}}} the function should return 27 (one 1 at depth 1, one 4 at depth 2, and one 6 at depth 3) */ int depthSum (NestedInteger *input, int count) {} /** * This is the interface that represents nested lists. * You should not implement it, or speculate about its implementation. */ class NestedInteger { /** @return true if this NestedInteger holds a single integer, rather than a nested list */ boolean isInteger(); /** @return the single integer that this NestedInteger holds, if it holds a single integer * Return null if this NestedInteger holds a nested list */ Integer getInteger(); /** @return the nested list that this NestedInteger holds, if it holds a nested list * Return null if this NestedInteger holds a single integer */ NestedInteger *getList(); int getCount(); }  
+
+</li>
+
+<li> All leet code questions
+</li>
+
+
+<li>
+Given two words as Strings, determine if they are isomorphic. Two words are called isomorphic if the letters in one word can be remapped to get the second word. Remapping a letter means replacing all occurrences of it with another letter while the ordering of the letters remains unchanged. No two letters may map to the same letter, but a letter may map to itself. * * Example: * given "foo", "app"; returns true * we can map 'f' -&gt; 'a' and 'o' -&gt; 'p' * * given "foo", "boa"; returns false * we can map 'f' -&gt; 'b', 'o' -&gt; 'o', we can't map 'o' -&gt; 'a' * * given "bar", "foo"; returns false * we can't map both 'a' and 'r' to 'o' * * given "turtle", "tletur"; returns true * we can map 't' -&gt; 't', 'u' -&gt; 'l', 'r' -&gt; 'e', 'l' -&gt; 'u', 'e' -&gt;'r' * * given "ab", "ca"; returns true * we can map 'a' -&gt; 'c', 'b' -&gt; 'a' */  
+</li>
+<li>
+Find out at least one 3 elements array in a given integer array. The 3 elements have to be able to form a triangle.  
+</li>
+
+
+<li>
+
+There's requirements from the engineers that they want to limit the right of code files in git server by marking the owner of each file. How would you design the system to solve this problem? What if the user want to use regex when configuring the owner of files?  
+
+</li>
+
+
+<li>
+Given an input string and a target string, find the minimum substring of the input string that contains all of the characters in the target string  
+</li>
+
+<li>
+Print out the level order traversal of a Binary Tree, with new line after each level.  
+</li>
+
+<li>
+They asked to write a function that takes a string and check if it is a number. The second question was given a sorted array that has been rotated, find a number in that array {6,7,1,2,3,4,5}  
+</li>
+
+<li>
+Text Justification  
+</li>
+
+
+</ol>

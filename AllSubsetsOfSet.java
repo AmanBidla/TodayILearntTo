@@ -1,20 +1,50 @@
+import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 public class AllSubsetsOfSet{
 
 
-	private static ArrayList<ArrayList<Integer>> getAllSubsets(ArrayList<Integer> set,int index){
 
-		ArrayList<ArrayList<Integer>> all = null;
+	public static List<List<Integer>> getAllSubsets(int []A){
+
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		for(int val: A){
+
+			int size = result.size();
+			for(int i=0;i<size;i++){
+				List<Integer> temp = new ArrayList<Integer>(result.get(i));
+				temp.add(val);
+				result.add(temp);
+			}
+			result.add(new ArrayList<Integer>(Arrays.asList(val)));
+		}
+
+		return result;
+	}
+ 
+	////////////////////////////////////
+
+		///// simple accepted soluton is above. 
+		////  correct but complicates solution is below
+
+	////////////////////////////////////
+
+
+	
+	private static List<List<Integer>> getAllSubsets(List<Integer> set,int index){
+
+		List<List<Integer>> all = null;
 
 		if(index == set.size()){
-			all = new ArrayList<ArrayList<Integer>>();
+			all = new ArrayList<List<Integer>>();
 			all.add(new ArrayList<Integer>());
 		}else{
 			all = getAllSubsets(set,index+1);
-			ArrayList<ArrayList<Integer>> more = new ArrayList<ArrayList<Integer>>();
+			List<List<Integer>> more = new ArrayList<List<Integer>>();
 			int item = set.get(index);
-			for(ArrayList<Integer> subsets:all){
-				ArrayList<Integer> newSubset = new ArrayList<Integer>();
+			for(List<Integer> subsets:all){
+				List<Integer> newSubset = new ArrayList<Integer>();
 				newSubset.add(item);
 				newSubset.addAll(subsets);
 				more.add(newSubset);
@@ -29,17 +59,20 @@ public class AllSubsetsOfSet{
 
 	public static void main(String[] args) {
 		
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		List<Integer> list = new ArrayList<Integer>();
 		list.add(1);
 		list.add(2);
 		list.add(3);
-		ArrayList<ArrayList<Integer>> all = getAllSubsets(list,0);
-		for(ArrayList<Integer> subset : all){
+		List<List<Integer>> all = getAllSubsets(list,0);
+		int [] array = {1,2,3};
+		all = getAllSubsets(array);
+
+		for(List<Integer> subset : all){
 			show(subset);
 		}
 	}
 
-	private static void show(ArrayList<Integer> set){
+	private static void show(List<Integer> set){
 		for(int i:set){
 			System.out.print(i+" ");
 		}

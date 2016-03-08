@@ -21,7 +21,8 @@ public class AllPermutationIterative{
 				}
 			}
 
-			result= new ArrayList<List<Integer>>(curr);			
+			//result = new ArrayList<List<Integer>>(curr);
+			result.addAll(curr);
 		}
 
 		return result;

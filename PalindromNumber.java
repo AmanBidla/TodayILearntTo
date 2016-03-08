@@ -15,7 +15,7 @@ public class PalindromNumber{
 			if(left!=right) return false;
 
 			N=(N%div)/10;
-			div/=100;
+		 	div/=100;
 		}
 		return true;
 	}

@@ -7,6 +7,8 @@ public class PalindromicSubstring{
 		
 		String s="aab";
 		s="forgeeksskeegfor";
+		s="geeks";
+		s="nitin";
 		List<String> result = palindromicSubstring(s);
 		for(String ss:result){
 			System.out.println(ss);
@@ -31,6 +33,8 @@ public class PalindromicSubstring{
 		for(int k=1;k<=N;k++){
 			for(int i=0;i<=N-k;i++){
 				int j=i+k-1;				 
+				System.out.println(" k "+k+" i "+i+" j "+(i+k-1));
+				System.out.println(S.charAt(i)+" & "+S.charAt(j));
 				if(S.charAt(i)==S.charAt(j)){
 
 					if(k==1 || k==2){
@@ -40,6 +44,7 @@ public class PalindromicSubstring{
 					}
 
 					if(dp[i][j]==1){
+						System.out.println(">>> "+S.substring(i,j+1));
 						result.add(S.substring(i,j+1));
 					}
 				}else{

@@ -5,7 +5,8 @@ public class ReverseSentence{
 		
 		String sentence =" Hi, My name is sreeprasad";
 		
-		 reverse(sentence.toCharArray());
+		 //reverse(sentence.toCharArray());
+		System.out.println(reverse());
 		
 	}
 
@@ -26,5 +27,7 @@ public class ReverseSentence{
 			System.out.print(rev[i]);
 		
 	}
+
+	 
 
 }

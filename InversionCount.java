@@ -1,24 +1,34 @@
 import java.util.Arrays;
+import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 
 public class InversionCount{
 
-	public static int mergeSort(int [] array, int [] aux, int left, int right){
+	private static int LENGTH=100000;
 
-		int inv=0;
+	public static long mergeSort(int [] array, int [] aux, int left, int right){
+
+		long inv=0;
 		if(left<right){
 
-			int mid = (left+right)/2;
+			int mid = left+(right-left)/2;
 
 			inv = mergeSort(array,aux,left,mid);
 			inv = inv+ mergeSort(array,aux,mid+1,right);
 			inv = inv +merge(array,aux,left,mid+1,right);
 
 		}
+		System.out.println(" inv "+inv );
 		return  inv;
 	}
 
 
-	public static int merge(int [] array,int [] aux, int left, int mid, int right){
+	public static long merge(int [] array,int [] aux, int left, int mid, int right){
 
 		int i=left;
 		int j= mid;
@@ -47,12 +57,12 @@ public class InversionCount{
 			array[i]=aux[i];
 		}
 
-		System.out.println(Arrays.toString(array)+ " inv "+inv );
+		//System.out.println(Arrays.toString(array)+ " inv "+inv );
 
 		return inv;
 	}
 
-	public static int inversion (int [] array){
+	public static long inversion (int [] array){
 
 		int N = array.length;
 		int [] aux = new int [N];
@@ -67,6 +77,28 @@ public class InversionCount{
 		System.out.println(inversion(array));
 		int [] array2 ={1, 1, 1, 2, 2};
 		System.out.println(inversion(array2));
+		
+		//System.out.println(inversion(readFile(args[0])));
+	}
+
+	private static int [] readFile(String fileName){
+		int [] A = new int[LENGTH];
+		try{
+			BufferedReader buf = new BufferedReader(new FileReader(new File(fileName)));
+			String line;
+			int i=0;
+			while( (line=buf.readLine())!=null){
+				A[i] = Integer.parseInt(line);
+				i++;
+			}
+		}catch(FileNotFoundException e){
+			System.out.println(e);
+		}catch(IOException e){
+			System.out.println(e);
+		}
+		for(int i=0;i<LENGTH;i++)
+			System.out.println(A[i]);
+		return A;
 	}
 
 }

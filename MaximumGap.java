@@ -11,8 +11,11 @@ public class MaximumGap {
 
 	public static void main(String[] args) {
 		
-		int [] array={5,9,8,3,15};
+		//int [] array={5,9,8,3,15}; // should be 6		
+		//System.out.println( maxGap(array));
+		int [] array = {1,10000000};
 		System.out.println( maxGap(array));
+
 	}
 
 	public static int maxGap(int [] array){
