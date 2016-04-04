@@ -21,8 +21,8 @@ public class AllPermutationIterative{
 				}
 			}
 
-			//result = new ArrayList<List<Integer>>(curr);
-			result.addAll(curr);
+			result = new ArrayList<List<Integer>>(curr);
+			//result.addAll(curr);
 		}
 
 		return result;
@@ -30,7 +30,7 @@ public class AllPermutationIterative{
 
 	public static void main(String[] args) {
 
-		int [] array={1,2,3};
+		int [] array={1,2,2};
 		List<List<Integer>> result = allPermutation(array);
 		for(List<Integer> list:result){
 			Integer[] arrayList = list.toArray(new Integer[list.size()]);

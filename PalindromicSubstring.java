@@ -9,8 +9,10 @@ public class PalindromicSubstring{
 		s="forgeeksskeegfor";
 		s="geeks";
 		s="nitin";
+		// use palindromicDecomposition() method not below
 		List<String> result = palindromicSubstring(s);
-		for(String ss:result){
+		// use palindromicDecomposition function. its easier to understand
+		for(String ss:palindromicDecomposition(s)){
 			System.out.println(ss);
 		}
 	}
@@ -55,4 +57,65 @@ public class PalindromicSubstring{
 
 		return result;
 	}
+
+
+
+	/////////////////////////
+
+	// USE BELOW CODE    ///
+
+	///////////////////////
+
+
+	static String[] palindromicDecomposition(String strInput) {
+        
+        List<List<String>> result = new ArrayList<List<String>>();
+        List<String> item = new ArrayList<String>();
+        palindrome(strInput.toCharArray(),result,item,0);
+        return convertToArray(result);
+    }
+
+    private static String[] convertToArray(List<List<String>> result) {
+        
+        String[] array = new String[result.size()];
+        for(int i=0;i<result.size();i++){
+            StringBuilder buf = new StringBuilder();
+            for(int j=0;j<result.get(i).size();j++){
+                buf.append(result.get(i).get(j)); 
+                buf.append("|"); 
+            }
+            array[i]= buf.toString();
+        }
+        return array;
+    }
+
+    private static void palindrome(char[] array,List<List<String>> result,List<String> item, int index){
+        
+        if(index==array.length){
+            result.add(new ArrayList<String>(item));
+            return;
+        }
+        
+        for(int i=index;i<array.length;i++){
+            
+            if(isPalindrome(array,index,i)){
+                item.add(new String(array,index,i+1-index));
+                palindrome(array,result,item,i+1);
+                item.remove(item.size()-1);
+            }
+        }        
+    }
+     
+    private static boolean isPalindrome(char[]array, int left, int right){
+        while(left<right){
+            if(array[left] != array[right]){
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+
 }

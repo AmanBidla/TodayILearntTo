@@ -1,40 +1,60 @@
-public interface Graph {
+import java.util.List;
+import java.util.ArrayList;
+
+public class Graph {
 
 
-	/* init function to initialize */
-	public void Init(int n);
+	static int VERTICES;
+	static int EDGES;
+	List<List<Integer>> bag;
 
-	/* get number of vertices */
-	public int getN();
+	public Graph (int VERTICES){
+		this.VERTICES = VERTICES;
+		bag = new ArrayList<List<Integer>>();
+		for(int i=0;i<VERTICES;i++){
+			List<Integer> list = new ArrayList<Integer>();
+			bag.add(list);
+		}
+	}
 
-	/* get number of Edges */
-	public int getE();
+	public static void main(String[] args) {
+		
+	}
 
-	/* set an edge between vertex v,u  of weight w*/
-	public void setEdge(int v, int u,int w);
+	public void addEdge(int v,int w){
+		System.out.println("adding edge between "+v+" and "+w);
+		validate(v);
+		validate(w);
+		EDGES++;
+		bag.get(v).add(w);
+		bag.get(w).add(v);
+		System.out.println(" number of edges connecting 0 is "+bag.get(0).size());
+	}
 
-	/* remove edge (u,v)  and return edge */
-	public int remove(int u, int v);
+	public boolean validate(int v){
+		if(v<0 || v>VERTICES) throw new IndexOutOfBoundsException("vertex "+v+" should be between 0 & "+VERTICES);
+		return true;
+	}
 
-	/* get first neigbour */
-	public int first(int v);
-
-	/* get first neighbour to v after w */
-	public int second(int v, int w);
-
-
-	/* return true if there is an edge of non zero weight between vertices u, w */
-	public boolean isEdge(int u, int v);
-
-	/* get weight of an edge */
-	public int weight(int i, int v);
-
-
-	/* mark the vertex with a value */
-	public void setMark( int i, int value);
+	public List<Integer> adj(int w){
+		validate(w);
+		return bag.get(w);
+	}
 
 
-	/* get the value of the marked vertex */
-	public int getMark(int j);
+	public void connectedEdges(){
 
+		for(int i=0;i<VERTICES;i++) {
+			System.out.print(i+":");
+			List<Integer> adjVertices = bag.get(i);	
+			System.out.println("size of edges "+adjVertices.size());		
+			for(int j=0;j<adjVertices.size();j++){
+				System.out.print(adjVertices.get(j));
+				if(j!=adjVertices.size()-1){
+					System.out.print("->");
+				}
+			}
+			System.out.println();
+		}
+	}
 }

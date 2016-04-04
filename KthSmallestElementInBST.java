@@ -1,6 +1,6 @@
 public class KthSmallestElementInBST{
 
-	private static int K=4, reached=0,showTime=0;
+	private static int K=1, reached=0,showTime=0;
 
 	private class Node{
 

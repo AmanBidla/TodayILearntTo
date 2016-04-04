@@ -1,91 +1,65 @@
-import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Set;
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 
-public class WordBreak2{
+public class WordBreak2 {
 
-	public static void main(String[] args) {
-		
-		input1();
-	}
+	public static List<String> wordBreak2(String S, Set<String> dict){
 
-	private static void input1(){
-      String S = "catsanddog";
-      Set<String> dict = new HashSet<String>();
-      dict.add("cat");
-      dict.add("cats");
-      dict.add("and");
-      dict.add("sand");
-      dict.add("dog");
-      List<String> list = wordBreak2(S,dict);
-      for(String w:list){
-        System.out.println(w);
-      }
-
-    }
-
-	 
-
-	private static List<String> wordBreak2(String S, Set<String> dict){
-
-
-		List<Integer> [] starts = new List[S.length()+1];
-		int maxLen = maxLengthOfWordInDict(dict);
-		starts[0] = new ArrayList<Integer>();
-
-		for(int i=1;i<=S.length();i++){
-			for(int j=i-1; j>= (i-maxLen) && j>=0;  j--){
-
-				if(starts[j] == null){
-					continue;
-				}
-
-				if(dict.contains(S.substring(j,i))){
-
-					if(starts[i] == null){
-						starts[i] = new ArrayList<>();
-					}
-
-					starts[i].add(j);
-				}
-			}
+		if((S==null) || (S.length()==0) || (dict==null) || (dict.size()==0)) {
+			return new ArrayList<String>();
+		}
+		int maxLength=Integer.MIN_VALUE;
+		for(String word:dict){
+			maxLength = Math.max(word.length(),maxLength);
 		}
 
-		List<String> result = new ArrayList<>();
-		if( starts[S.length()] == null){
+		return dfs(S,dict,0,maxLength);
+
+	}
+	private static Map<String,List<String>> dp = new HashMap<String,List<String>>();
+
+	private static List<String> dfs(String S, Set<String> dict, int start, int max){
+
+		List<String> result = new ArrayList<String>();
+		if(start==S.length()){
+			result.add("");
 			return result;
 		}
 
-		dfs(result, dict, S, "", starts, S.length() );
+		for(int i=start+1;i<=S.length() && i<=start+max;i++){
 
-		return result;
-	}
+			String word = S.substring(start,i);
+			if(dict.contains(word)){
 
-	private static void dfs(List<String> result, Set<String> dict, String S, String path, List<Integer>[] starts, int end) {
-
-		if(end == 0){
-			result.add(path.substring(1));
-		} else {
-
-			for(Integer start: starts[end]){
-				String word = S.substring(start, end);
-				if(dict.contains(word)){
-					dfs(result, dict, S, " "+word+path,starts, start);
+				List<String> temp;
+				if(dp.containsKey(word)){
+					temp = dp.get(word);
+				}else{
+					temp = dfs(S,dict,i,max);
+				}
+				for(String t:temp){
+					result.add(word+ (t.equals("") ? "" : " ") + t);
 				}
 			}
 		}
+		dp.put(S,result);
+		return result;
 	}
 
-	private static int maxLengthOfWordInDict(Set<String> dict){
-
-		int maxLen = Integer.MIN_VALUE;
-		for(String word: dict){
-
-			maxLen = Math.max(maxLen, word.length());
-		}
-
-		return maxLen;
+	public static void main(String[] args) {
+		/*
+		String S = "catsanddog";
+		String [] array = {"cat", "cats", "and", "sand", "dog"}; 
+		*/
+		String S = "appletablet";
+		String [] array = {"apple","tablet","able", "table", "t","app", "let","applet"};
+  		Set<String> dict = new HashSet<String>(Arrays.asList(array));
+		List<String> result = wordBreak2(S,dict);
+		System.out.println(Arrays.toString(result.toArray(new String[result.size()])));
 	}
-
 }

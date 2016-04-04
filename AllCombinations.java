@@ -1,8 +1,8 @@
 import java.util.*;
 public class AllCombinations{
 
-
-	public List<List<Integer>> combine(int n, int k) {
+ 
+	public static List<List<Integer>> combine(int n, int k) {
     	
     	List<List<Integer>> result = new ArrayList<List<Integer>>();
     	List<Integer> sol = new ArrayList<Integer>();
@@ -10,7 +10,7 @@ public class AllCombinations{
     	return result;   
     }
 
-    private void dfs(int end, int k, int level, List<Integer> sol, List<List<Integer>> result ){
+    private static void dfs(int end, int k, int level, List<Integer> sol, List<List<Integer>> result ){
 
     	if(k==sol.size()){
     		List<Integer> copy = new ArrayList<Integer>(sol);
@@ -26,7 +26,7 @@ public class AllCombinations{
 
     public static void main(String[] args) {
     	AllCombinations c = new AllCombinations();
- 		List<List<Integer>> result = c.combine(4,2);   	
+ 		List<List<Integer>> result = c.combine(4,3);   	
  		for(List<Integer> r:result){
  			System.out.println(Arrays.toString(r.toArray()));
  		}

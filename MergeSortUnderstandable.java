@@ -21,7 +21,8 @@ public class MergeSortUnderstandable {
 
 		if(left<right){
 
-			int mid = (left+right)/2;			 
+			int mid = (left+right)/2;
+			//System.out.println("left "+left+" right "+right+" mid "+mid);
 			mergeSort(array,temp,left,mid);
 			mergeSort(array,temp,mid+1,right);
 			merge(array,temp,left,mid+1,right);

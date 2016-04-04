@@ -9,6 +9,7 @@ public class AllSubsetsOfSet{
 	public static List<List<Integer>> getAllSubsets(int []A){
 
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		// sort A if you want result in an order
 		for(int val: A){
 
 			int size = result.size();
@@ -19,7 +20,7 @@ public class AllSubsetsOfSet{
 			}
 			result.add(new ArrayList<Integer>(Arrays.asList(val)));
 		}
-
+		result.add(new ArrayList<Integer>()); 
 		return result;
 	}
  
@@ -31,7 +32,7 @@ public class AllSubsetsOfSet{
 	////////////////////////////////////
 
 
-	
+
 	private static List<List<Integer>> getAllSubsets(List<Integer> set,int index){
 
 		List<List<Integer>> all = null;
@@ -66,6 +67,7 @@ public class AllSubsetsOfSet{
 		List<List<Integer>> all = getAllSubsets(list,0);
 		int [] array = {1,2,3};
 		all = getAllSubsets(array);
+		all = subsetAnotherSolution(array);
 
 		for(List<Integer> subset : all){
 			show(subset);
@@ -73,10 +75,36 @@ public class AllSubsetsOfSet{
 	}
 
 	private static void show(List<Integer> set){
+		System.out.print("[ ");
 		for(int i:set){
 			System.out.print(i+" ");
 		}
-		System.out.println("");
+		System.out.println("]");
+	}
+
+
+	public static List<List<Integer>> subsetAnotherSolution(int [] array) {
+
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		if ((array == null) || (array.length==0)) {
+			return result;
+		}
+		Arrays.sort(array);
+		List<Integer> item = new ArrayList<Integer>();
+		dfs(array,result,item,0);
+		return result;
+	}
+
+	private static void dfs(int[]array, List<List<Integer>> result, List<Integer> item, int index){
+		
+		result.add(new ArrayList<Integer>(item));
+		for(int i=index;i<array.length;i++) {
+			//if(i>index && array[i]==array[i-1]) continue;
+			item.add(array[i]);
+			dfs(array,result,item,i+1);
+			item.remove(item.size()-1);
+		}
+ 
 	}
 
 }

@@ -4,7 +4,7 @@ public class LCS {
 
 
 	public static void main(String []ad){
-    	System.out.println("LCS = "+LCS("GTATATATATACC","GTTCCTAATA"));
+    	System.out.println(" LCS = "+LCS("GTATATATATACC","GTTCCTAATA"));
 	}
 
 	
@@ -12,28 +12,33 @@ public class LCS {
 		
 		int M = x.length();
 		int N = y.length();
+		 
+		int[][] opt = new int[M+1][N+1];
+
+         for (int i = M-1; i >= 0; i--) {
+            for (int j = N-1; j >= 0; j--) {
+                if (x.charAt(i) == y.charAt(j))
+                    opt[i][j] = opt[i+1][j+1] + 1;
+                else 
+                    opt[i][j] = Math.max(opt[i+1][j], opt[i][j+1]);
+            }
+        }
 		
-		int [][] table = new int[M+1][N+1];
-		
-		for(int i=0;i<M;i++){
- 			table[i][0]=0;
-		}
-		
-		for(int j=0;j<N;j++){
-			table[0][j]=0;
-		}
-		
-		for(int i=1;i<=M;i++){
-			for(int j=1;j<=N;j++){
-				if(x.charAt(i-1)==y.charAt(j-1)){
-					table[i][j]=table[i-1][j-1]+1;
-				}else{
-					table[i][j]=Math.max(table[i-1][j],table[i][j-1]);
-				}
+		int i=0,j=0;
+		while(i<M && j<N){
+			if(x.charAt(i)==y.charAt(j)){
+				System.out.print(x.charAt(i));
+				i++;
+				j++;
+			}else if(opt[i+1][j]>=opt[i][j+1]){
+				i++;
+			}else{
+				j++;
 			}
 		}
-		
-		return table[M][N];
+
+	 
+		return opt[0][0];
 		
 		
 		
