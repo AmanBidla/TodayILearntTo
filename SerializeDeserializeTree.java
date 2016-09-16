@@ -1,70 +1,87 @@
+import java.util.StringTokenizer;
+
 class Node{
 
 	Node left,right;
 	int val;
 
-	Node(Node left, Node right, int val){
-		this.left=left;
-		this.right=right;
+	Node(int val) {				
 		this.val=val;
 	}
 
 }
 public class SerializeDeserializeTree{
+ 
 
+ 	public static String serialize(Node root){
 
-	private static String HASH ="#";
-	private static String serialize(Node root){
+ 		if(root==null){
+ 			return null;
+ 		}
 
-		if(root==null) return HASH;
+ 		StringBuilder buf = new StringBuilder();
+ 		serialize(root,buf);
+ 		return buf.toString();
 
-		String curr = ""+root.val;
-		String left = serialize(root.left);
-		String right = serialize(root.right);
+ 	}
 
-		return curr +" "+left+" "+right;
-	}
+ 	private static void serialize(Node root, StringBuilder buf) {
 
-	private static Node deserialize(String S){
-		String [] array = S.split(" ");
-		return deserialize(array);
-	}
+ 		if(root==null){
+ 			buf.append("#,"); 			 
+ 			return;
+ 		}
 
-	private static int index=0;
-	private static Node deserialize(String [] array){
-		if(index>array.length) return null;
-		if(array[index].equals(HASH)){
-			index++;
-			return null;
-		}
-		int val = Integer.parseInt(array[index]);
- 		Node root = new Node(null,null,val);
-		index++;
-		root.left = deserialize(array);
-		root.right = deserialize(array);
-		return root;
-	}
+ 		buf.append(root.val);
+ 		buf.append(",");
+ 		serialize(root.left,buf);
+		serialize(root.right,buf);
+ 	}
 
-	public static void main(String[] args) {
-		
-		Node root = new Node(null,null,8);
-		Node left = new Node(null,null,16);
-		Node right = new Node(null,null,24);
+ 	public static Node deserialize(String S) {
 
-		root.left = left;
-		root.right = right;
+ 		if(S==null) {
+ 			return null;
+ 		}
+
+ 		StringTokenizer tokenizer = new StringTokenizer(S,",");
+ 		return deserialize(tokenizer);
+ 	}
+
+ 	private static Node deserialize(StringTokenizer tokenizer) {
+
+ 		String val = tokenizer.nextToken();
+ 		if(val.equals("#")){
+ 			return null;
+ 		}
+
+ 		Node node = new Node(Integer.parseInt(val));
+ 		node.left = deserialize(tokenizer);
+ 		node.right = deserialize(tokenizer);
+ 		return node;
+ 	}
+
+ 	public static void main(String[] args) {
+ 		
+ 		Node root = new Node(8);
+ 		root.left = new Node(16);
+ 		root.right = new Node(24);
+		 
+ 
 		String S = serialize(root);
 		System.out.println(S);
 		Node dRoot = deserialize(S);
 		print(dRoot);
 		System.out.println();
-	}
 
-	private static void print(Node root){
-		if(root.left!=null) print(root.left);
+ 	}
+
+ 	private static void print(Node root){
+		
 		System.out.print(root.val+" ");
+		 
+		if(root.left!=null) print(root.left);
 		if(root.right!=null) print(root.right);		
 	}
-
 
 }

@@ -1,5 +1,5 @@
 import java.util.*;
-public class CombinationSum{
+public class CombinationSumTwo{
 
 
 	public List<List<Integer>> combinationSum2(int[] num, int target) {
@@ -11,12 +11,11 @@ public class CombinationSum{
         return result;
     }
     private List<List<Integer>> combin(int [] num,int target, int sum, int level,List<List<Integer>> result,List<Integer> sol ){
-        //System.out.println( Arrays.toString(sol.toArray())+" and sum "+sum);
-        if(sum>target){
+     if(sum>target){
             return result;
         }
         if(sum==target){
-        	List<Integer> copy = new ArrayList<Integer>(sol);
+            List<Integer> copy = new ArrayList<Integer>(sol);
             result.add(copy);           
             return result;
         }
@@ -36,7 +35,7 @@ public class CombinationSum{
     public static void main(String[] args) {
     	int [] num ={10,1,2,7,6,1,5 };
     	int target=8;
-    	CombinationSum c = new CombinationSum();
+    	CombinationSumTwo c = new CombinationSumTwo();
     	List<List<Integer>> result = c.combinationSum2(num,target);
     	System.out.println("target is "+target);
     	for(List<Integer> l:result){

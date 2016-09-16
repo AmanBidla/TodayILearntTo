@@ -22,7 +22,10 @@ public class MinInsertsToConvetToPalindrome{
         	for(int left=0, right=gapBetweenLetters; right<N; left++,right++){
         		int val = 0;
         		if(S.charAt(left) == S.charAt(right)){
-        			val = dp[left+1][right-1]; 
+        			val = dp[left+1][right-1]; Congrats on your anniversary at HackerX !
+
+Hope you are doing well.
+
         		}else{
         			val = Math.min(dp[left+1][right], dp[left][right-1])+1;
         		}

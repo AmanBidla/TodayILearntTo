@@ -40,32 +40,36 @@ public class KthSmallestElementInBST{
 
 	}
 
-	public static int KthSmallest(int K, Node root){
-
-		 if(root==null||K<0) {
-		 	return K;
-		 }
-		 K = KthSmallest(K,root.left);
-		 //System.out.println("before K is "+K+ " and root is "+root.value+" reached "+reached);
-		  --K;
-		 //System.out.println("after K is "+K+ " and root is "+root.value+" reached "+reached);
-		 if(K==0){
-		 	//System.out.println(">>> K is "+K+ " and root is "+root.value+" reached "+reached);
-		 	System.out.println("kth smallest is "+root.value);
-		 	reached=1;
-		 	return K;
-		 }
-		 K = KthSmallest(K,root.right);
-		 return K;
-	}
+	public static int kthSmallest(Node root, int k) {
+        
+        int leftCount= count(root.left);
+        if(leftCount+1==k){
+            return root.value;
+        } else if(k>(leftCount+1)){
+            k = k-(leftCount+1);
+            return kthSmallest(root.right,k);
+        } else{
+            return kthSmallest(root.left,k);
+        }
+        
+    }
+    
+    public static int count(Node node){
+        if(node==null){
+            return 0;
+        }
+        return 1+count(node.left)+count(node.right);
+    }
 
 	public static void main(String[] args) {
 		
 		KthSmallestElementInBST km = new KthSmallestElementInBST();
 		Node root = km.createTree();
 		
-		//km.showTree(root);
-		KthSmallest(K,root);
+		for(int i=1;i<=10;i++) {
+			System.out.println(i+"th smallest element is "+kthSmallest(root,i));
+		} 
+		kthSmallest(root,K);
 		 
 	}
 

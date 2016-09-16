@@ -11,15 +11,13 @@ public class IsValidSuduku {
 
 	}
 
-	 
-
+	  
 
 	public static boolean another(char [][] board){
 
 		if (board == null || board.length != 9 || board[0].length != 9)
 		return false;
-		// check each column
-		for (int i = 0; i < 9; i++) {
+ 		for (int i = 0; i < 9; i++) {
 			boolean[] m = new boolean[9];
 			for (int j = 0; j < 9; j++) {
 				if (board[i][j] != '.') {
@@ -32,7 +30,7 @@ public class IsValidSuduku {
 			}
 		}
 	 
-		//check each row
+		//check each  row
 		for (int j = 0; j < 9; j++) {
 			boolean[] m = new boolean[9];
 			for (int i = 0; i < 9; i++) {

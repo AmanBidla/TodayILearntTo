@@ -10,45 +10,56 @@ public class NumberOfIslands{
 		                        {0, 0, 0, 0, 0},
 		                        {1, 0, 1, 0, 1}
 		                  };
+ 		 
+
 
 		System.out.println( connected(matrix));
 	}
 
-	public static boolean isValid(int x, int y,int [][] matrix){
+	public static boolean isSafe(int i, int j,int [][] matrix, boolean[][] visited){
 
-		return x>=0 && x<matrix.length && y>=0 && y<matrix[0].length;
-
+		return i>=0 
+					&& i<matrix.length 
+					&& j>=0 
+					&& j<matrix[0].length
+					&& !visited[i][j]
+					&& matrix[i][j]==1;
+  
 	}
 
 
-	public static void DFS(int [][] matrix, int x, int y, boolean [][] visited){
+	public static void DFS(int [][] matrix, int i, int j, boolean [][] visited){
+ 
+			visited[i][j]=true;
 
-		if( !isValid(x,y,matrix)) return ;
-		if( matrix[x][y]==0) return;
-		if( visited[x][y]) return ;
+			if (isSafe(i+1,j,matrix,visited)){
+				DFS(matrix,i+1,j,visited);
+			}
 
-		visited[x][y]=true;
-		//System.out.println(">>>> visited  ("+x+","+y+") and matrix at "+matrix[x][y]);
-		DFS(matrix,x+1,y,visited);
-		DFS(matrix,x-1,y,visited);
-		DFS(matrix,x,y-1,visited);
-		DFS(matrix,x,y+1,visited);
-		DFS(matrix,x+1,y+1,visited);
-		DFS(matrix,x-1,y-1,visited);
-		DFS(matrix,x+1,y-1,visited);
-		DFS(matrix,x-1,y+1,visited);
-		 
+			if (isSafe(i-1,j,matrix,visited)){
+				DFS(matrix,i-1,j,visited);
+			}
+			if (isSafe(i,j+1,matrix,visited)){
+				DFS(matrix,i,j+1,visited);
+			}
+			if (isSafe(i,j-1,matrix,visited)){
+				DFS(matrix,i,j-1,visited);
+			}
+ 
+
 	}
 
 	public static  int connected(int [][] matrix){
 
 		int count=0;
+
 		int M = matrix.length;
 		int N = matrix[0].length;
 
-		boolean [][] visited = new boolean[M][N];		 
-		for(int i=0;i<matrix.length;i++){
-			for(int j=0;j<matrix[0].length;j++){
+		boolean [][] visited = new boolean[M][N];	
+
+		for(int i=0;i<matrix.length;i++) {
+			for(int j=0;j<matrix[0].length;j++) {
 
 				if(!visited[i][j] && matrix[i][j]==1){
 					System.out.println("visiting ("+i+","+j+")");

@@ -45,7 +45,8 @@ public class Manacher{
 	public static void main(String[] args) {
 		
 		//String word = "abaaba";
-		String word = "babcbabcbaccba";
+		//String word = "babcbabcbaccba";
+		String word = "abaxabaxabb";
 		Manacher m = new Manacher(word);
  		System.out.println(m.findPalindrome());
 

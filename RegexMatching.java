@@ -1,79 +1,40 @@
-public class RegexMatching{
+public class RegexMatching {
 
-	static boolean regex(String r, String s){
 
-		if(r.charAt(0)=='^')
-			return matchHere(r.substring(1),s);
-		int i=0;
-		do{
-			if(matchHere(r,s.substring(i))){
-				return true;
-			}			
-		}while(i++ <s.length());
-		return false;
-	}
 
-	static boolean matchHere(String r, String s){
-		
-		//if r is empty
-		if(r.length()==0){
-			return true;
-		}
-
-		// check for *
-		if(r.length()>=2 && r.charAt(1)=='*')
-			return matchStar(r.charAt(0),r.substring(2),s);
-
-		if(r.charAt(0)=='$' && r.length()==1)
-			return s.length()==0;
-
-		//check for . or char
-		if(s.length()>0 && (r.charAt(0)=='.' || r.charAt(0)==s.charAt(0)))
-			return matchHere(r.substring(1),s.substring(1));
-
-		//System.out.println("return false s " + s+" r "+r);
-		return false;
-	}
-
-	static boolean matchStar(char c, String r, String s){
-		//System.out.println("c "+c+" r "+r+" s "+s );
-		int i=0;
-		do{
-			//System.out.println("checked "+s.substring(i));
-			if(matchHere(r,s.substring(i))){
-				return true;
-			}
-			//System.out.println("incrementing i "+i);
-		}while(i<s.length() && (s.charAt((i++))==c || c=='.') );
-
-		return false;
-	}
+	  public static boolean regex(String s, String p) {
+        if(s==null || p==null){
+            return false;
+        }
+        
+        int M = s.length();
+        int N = p.length();
+        boolean [][] dp = new boolean [M+1][N+1];
+        dp[0][0] = true;
+        for(int i=0;i<=M;i++){
+            for(int j=1;j<=N;j++){
+                if(p.charAt(j-1)=='*'){
+                    dp[i][j] = dp[i][j-2] || (i>0  && (s.charAt(i-1) == p.charAt(j-2) || p.charAt(j-2)=='.') && dp[i-1][j]);
+                } else {
+                    dp[i][j] = i>0 && dp[i-1][j-1] && (s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) =='.');
+                }
+            }
+        }
+        return dp[M][N];
+    }
 
 	public static void main(String[] args) {
 		
-		/*String r="a*b";
-		String s="accccccb";
-		boolean b = regex(r,s);
-		//System.out.println("r "+r+" s "+s+" ans "+b);
+ 
+		System.out.println("S = accccccb and P = ac*b "+regex("accccccb","ac*b"));// → true
 
-		r="^abc*b*ebe$";
-		s="abcbbbbbebe";
-		b=regex(r,s);
-		//System.out.println("r "+r+" s "+s+" ans "+b);		
-		r="aa";
-		s="aaa";
-		b=regex(r,s);
-		System.out.println("r "+r+" s "+s+" ans "+b);
-		*/
-
-		String r="a*b";
-		String s="accccccb";
-		boolean b = regex(r,s);
-		System.out.println("r "+r+" s "+s+" ans "+b);
-
-
-
+		System.out.println("S = aa and P =a "+regex("aa","a"));// → false
+		System.out.println("S = aa and P =aa "+regex("aa","aa"));// → true
+		System.out.println("S = aaa and P=aa"+regex("aaa","aa"));// → false
+		System.out.println("S = aa and P=a* "+regex("aa","a*"));// → true
+		System.out.println("S = aa and P=* "+regex("aa",".*"));// → true
+		System.out.println("S = ab and P =.*"+regex("ab",".*"));// → true
+		 
+		System.out.println("S = aab and P = c*a*b "+regex("aab","c*a*b"));// → true
 	}
-
-
 }

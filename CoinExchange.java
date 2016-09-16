@@ -30,9 +30,8 @@ public class CoinExchange{
 			i=amount-prevCoin[i];
 			amount = amount - prevCoin[j];
 		}
-
-		Integer [] coins = coinsAdded.toArray(new Integer[coinsAdded.size()]);
-		System.out.println( Arrays.toString(coins));
+		 
+		System.out.println( Arrays.toString(coinsAdded.toArray()));
 
 		//showdp(dp);
 
@@ -46,46 +45,34 @@ public class CoinExchange{
 		}
 		System.out.println("");
 	}
+	 
 
-	public static int allNumberofWaysRecursive(int amount, int coins[]) {
-    return findCombinationsCount(amount, coins, 0);
-}
+    public static int totalNumberOfWays (int sum, int[] array){
 
-	public static int findCombinationsCount(int amount, int coins[], int checkFromIndex) {
-	    if (amount == 0)
-	        return 1;
-	    else if (amount < 0 || coins.length == checkFromIndex)
-	        return 0;
-	    else {
-	        int withFirstCoin = findCombinationsCount(amount-coins[checkFromIndex  ], coins, checkFromIndex);
-	        int withoutFirstCoin = findCombinationsCount(amount, coins, checkFromIndex+1);
-	        return withFirstCoin + withoutFirstCoin;
-	    }
-	}
-	public static int allNumberofWaysDynamicProgramming(int sum, int vals[]) {
-        if (sum < 0) {
-            return 0;
-        }
-        if (vals == null || vals.length == 0) {
-            return 0;
-        }
+    	int N = array.length;
+    	int [][] dp = new int[sum+1][N];
 
-        int dp[] = new int[sum + 1];
-        dp[0] = 1;
-        for (int i = 0; i < vals.length; ++i) {
-            for (int j = vals[i]; j <= sum; ++j) {
-                dp[j] += dp[j - vals[i]];
-            }
-        }
-        return dp[sum];
+    	for(int i=0;i<N;i++){
+    		dp[0][i] = 1;
+    	}
+    	for(int i=1;i<=sum;i++){
+    		for(int j=0;j<N;j++){
+    			int x = i>=array[j] ? dp[i-array[j]][j] : 0;
+    			int y = j>0 ? dp[i][j-1] : 0;
+    			dp[i][j] = x+y;
+    		}
+    	}
+    	return dp[sum][N-1];
     }
 
 	public static void main(String[] args) {
 		    
-		    int d[] = {1, 5, 10, 25};
+		    int d[] = {1, 5, 10, 25};		    
 			//int []d ={1, 3,  5};
 		    int amount = 67; 
-		    System.out.println("number of ways is "+minimumNumberOfWays(d,amount));
+		     
+		    System.out.println("min number of ways is "+minimumNumberOfWays(d,amount));
+		    System.out.println("total number of ways is "+totalNumberOfWays(amount,d));
 		    //assert(coins(d,amount)==6);
 		    /*amount=4;
 		    System.out.println("number of ways is "+coins(d,amount));
@@ -106,6 +93,9 @@ public class CoinExchange{
 		    int amount = 18;
 		    System.out.println("number of ways is "+coins(d,amount));*/
 
+
+
+	 
 
 
 

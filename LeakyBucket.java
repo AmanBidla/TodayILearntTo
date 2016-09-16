@@ -15,8 +15,8 @@ public class LeakyBucket {
     }
  
     public void consume() throws InterruptedException{
- 
-        long currTime = System.currentTimeMillis();
+		// read from socket  
+        long currTime = System.currentTimeMillis(); // get current time form socket 
         long timeLeft;
 
         synchronized(this){
@@ -36,6 +36,7 @@ public class LeakyBucket {
             return;
         }else{
             Thread.sleep(timeLeft);
+
         }
     }
 

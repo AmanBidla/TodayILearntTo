@@ -2,50 +2,55 @@ public class SpiralMatrix{
 
 	public static void main(String[] args) {
 		
-		int [][] matrix ={{1, 2, 3, 4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+		
+
+		int[][] matrix = {{2,3}};
 		spiral(matrix);
 
 		//expected 1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10 
-		// output  1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10 
+		// output  1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
+				     
+	}
+
+	private static void testOne(){
+
+		int [][] matrix ={{1, 2, 3, 4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+		spiral(matrix);
 	}
 
 	public static void spiral(int[][]matrix){
 
-		int top=0;
-		int down = matrix[0].length-1;
-		int left=0;
-		int right=matrix[0].length-1;
+		int rowStart=0, rowEnd = matrix.length;
+		int colStart=0, colEnd = matrix[0].length;
+		System.out.println("rowStart: "+rowStart+" rowEnd: "+rowEnd);
+		System.out.println("colStart: "+colStart+" colEnd: "+colEnd);
 
-		while(true){
+		while(rowStart<rowEnd && colStart<colEnd){
 
-			// move left to right
-			for(int i=left;i<=right;i++){				
-				System.out.print(matrix[top][i]+" ");
+			for(int i=colStart;i<colEnd;++i){
+				System.out.printf("%d ", matrix[rowStart][i]);				
 			}
-			top++;
-			if(top>down|| left>right) break;
+			rowStart++;
 
-			//move top to down
-			for(int i=top;i<=down;i++){
-				System.out.print(matrix[i][right]+" ");
+			for(int i=rowStart;i<rowEnd;++i){
+				System.out.printf("%d ", matrix[i][colEnd-1]);
 			}
-			right--;
-			if(top>down|| left>right) break;
+			colEnd--;
 
-			// move right to left
-			for(int i=right;i>=left;i--){
-				System.out.print(matrix[down][i]+" ");
+			if(rowStart<rowEnd){
+				for(int i=colEnd-1;i>=colStart;--i){
+					System.out.printf("%d ", matrix[rowEnd-1][i]);
+				}
+				rowEnd--;				
 			}
-			down--;
-			if(top>down|| left>right) break;
 
-
-			// move down to top
-			for(int i=down;i>=top;i--){
-				System.out.print(matrix[i][left]+" ");
+			if(colStart<colEnd){
+				for(int i=rowEnd-1;i>=rowStart;--i){
+					System.out.printf("%d ", matrix[i][colStart]);
+				}
+				colStart++;
 			}
-			left++;
-			if(top>down|| left>right) break;
+
 		}
 
 	}

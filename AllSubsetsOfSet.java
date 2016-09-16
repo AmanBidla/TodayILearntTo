@@ -27,11 +27,9 @@ public class AllSubsetsOfSet{
 	////////////////////////////////////
 
 		///// simple accepted soluton is above. 
-		////  correct but complicates solution is below
+		////  correct but complicated solution is below
 
 	////////////////////////////////////
-
-
 
 	private static List<List<Integer>> getAllSubsets(List<Integer> set,int index){
 
@@ -63,7 +61,7 @@ public class AllSubsetsOfSet{
 		List<Integer> list = new ArrayList<Integer>();
 		list.add(1);
 		list.add(2);
-		list.add(3);
+		list.add(2);
 		List<List<Integer>> all = getAllSubsets(list,0);
 		int [] array = {1,2,3};
 		all = getAllSubsets(array);
@@ -106,5 +104,7 @@ public class AllSubsetsOfSet{
 		}
  
 	}
+
+	
 
 }
